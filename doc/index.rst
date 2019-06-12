@@ -9,6 +9,9 @@ Welcome to Music-Generation's documentation!
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
+   
+   journal
+   mark
 
 
 
