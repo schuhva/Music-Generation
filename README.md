@@ -1,2 +1,6 @@
 # Music-Generation
-## so what ##
+
+## Documentation ##
+
+https://music-generation.readthedocs.io/
+
