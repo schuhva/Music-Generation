@@ -38,6 +38,7 @@ release = '1.0'
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
+'''
 extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.doctest',
@@ -50,6 +51,20 @@ extensions = [
     'sphinx.ext.githubpages',
     'recommonmark',
     'sphinx_markdown_tables',
+]
+'''
+
+extensions = [
+    'sphinx.ext.autodoc',
+    'sphinx.ext.doctest',
+    'sphinx.ext.intersphinx',
+    'sphinx.ext.todo',
+    'sphinx.ext.coverage',
+    'sphinx.ext.mathjax',
+    'sphinx.ext.ifconfig',
+    'sphinx.ext.viewcode',
+    'sphinx.ext.githubpages',
+    'recommonmark',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -87,11 +102,13 @@ pygments_style = None
 #
 #html_theme = 'alabaster'
 
+'''
 import sphinx_modern_theme
 html_theme = 'sphinx_modern_theme'
 html_theme_path = [
 sphinx_modern_theme.get_html_theme_path(),
 ]
+'''
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
