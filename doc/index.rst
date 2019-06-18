@@ -15,14 +15,15 @@ Welcome to Music-Generation's documentation!
 
 
 
+Github
+======
+https://github.com/schuhva/Music-Generation
+
+
+
 Indices and tables
 ==================
 
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
-
-
-Github
-======
-https://github.com/schuhva/Music-Generation
