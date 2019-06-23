@@ -30,4 +30,18 @@ Arbeitsjounal
 
 
 
+.. code:: python
+
+    print(seq)
+    notes1 = NoteSeq(seq)
+    midi = Midi(1, tempo=120)
+    midi.seq_notes(notes1, track=0)
+    midi.write("demo.mid")
+
+
+.. parsed-literal::
+
+    C C D D F G A B B B B B A G F D D C 
+
+
 
