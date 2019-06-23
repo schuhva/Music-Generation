@@ -2,21 +2,24 @@
 1.01
 ====
 
-.. code:: ipython3
-
+.. code:: python3
+		
+		python3
     from pyknon.genmidi import Midi
     from pyknon.music import NoteSeq
     import numpy as np
 
-.. code:: ipython3
+.. code:: ipython
 
+	 ipython
     def angel_trans(grad):
         rad = (grad *np.pi) / 180
         return rad
 
 
-.. code:: ipython3
+.. code:: python
 
+	  python
     frame_dur = [0,2,4,5,7,9,11]     #[1,3,5,6,8,10,12]
     
     def roud_to_frame(frame, num):
@@ -24,7 +27,9 @@
         listnr = (np.abs(frame - num)).argmin()
         return frame[listnr]
 
-.. code:: ipython3
+.. code:: 
+
+    niente
 
     def mod12(n):
         return n % 12
