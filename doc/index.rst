@@ -18,7 +18,7 @@ Welcome to Music-Generation's documentation!
    :caption: Archiv:
    :glob:
    
-   archiv/*
+   archiv/*/*
    
 
 Github
