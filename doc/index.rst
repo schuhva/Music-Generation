@@ -15,8 +15,9 @@ Welcome to Music-Generation's documentation!
 
 .. toctree::
    :maxdepth: 2
-   :caption: Archiv:
+   :caption: Releases:
    :glob:
+   :reversed:
    
    releases/*/*
    
