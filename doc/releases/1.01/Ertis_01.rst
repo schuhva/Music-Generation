@@ -109,10 +109,11 @@
 .. raw:: html
 
     <audio controls="controls">
-      <source src="https://raw.githubusercontent.com/schuhva/Music-Generation/master/Ersteversuche/output.flac" type="audio/flac">
+      <source src="https://raw.githubusercontent.com/schuhva/Music-Generation/master/doc/releases/1.01/output.flac" type="audio/flac">
       Your browser does not support the <code>audio</code> element. 
     </audio>
+    
+https://raw.githubusercontent.com/schuhva/Music-Generation/master/doc/releases/1.01/output.flac
 
-https://raw.githubusercontent.com/schuhva/Music-Generation/master/Ersteversuche/output.flac
 
 
