@@ -4,20 +4,28 @@
 
 Trying out diffrent libraries which can generate sound in python
 
-.. code:: ipython3
+pyknon
+------
+
+1. output only as midi
+2. has many features
+
+.. code:: python3
 
     from pyknon.genmidi import Midi
     from pyknon.music import NoteSeq
     import numpy as np
 
-.. code:: ipython3
+.. code:: python3
 
     def angel_trans(grad):
         rad = (grad *np.pi) / 180
         return rad
 
 
-.. code:: ipython3
+not yet integrated a simpele major frame in which the melody can play
+
+.. code:: python3
 
     frame_dur = [0,2,4,5,7,9,11]     #[1,3,5,6,8,10,12]
     
@@ -26,7 +34,7 @@ Trying out diffrent libraries which can generate sound in python
         listnr = (np.abs(frame - num)).argmin()
         return frame[listnr]
 
-.. code:: ipython3
+.. code:: python3
 
     def mod12(n):
         return n % 12
@@ -35,7 +43,7 @@ Trying out diffrent libraries which can generate sound in python
         notes = "C C# D D# E F F# G G# A A# B".split()
         return notes[mod12(number)]
 
-.. code:: ipython3
+.. code:: python3
 
     #--main--
     
@@ -47,7 +55,7 @@ Trying out diffrent libraries which can generate sound in python
         note = note_name(num)
         seq = seq + note + " "
 
-.. code:: ipython3
+.. code:: python3
 
     print(seq)
     notes1 = NoteSeq(seq)
@@ -61,7 +69,14 @@ Trying out diffrent libraries which can generate sound in python
     C C D D F G A B B B B B A G F D D C 
 
 
-.. code:: ipython3
+pyfluidsynth
+------------
+
+more or less an python api for fluidsynth direct sound output suports
+several channels with diffrent instruments (Gneral-Midi) todo: ouput as
+an audio file.
+
+.. code:: python3
 
     import time
     import fluidsynth
@@ -101,7 +116,12 @@ Trying out diffrent libraries which can generate sound in python
     (0, 0, 0, b'')
 
 
-.. code:: ipython3
+midi2audio
+----------
+
+midi to audio converter with FluidSynth
+
+.. code:: python3
 
     from midi2audio import FluidSynth
     fs = FluidSynth('/usr/share/sounds/sf3/MuseScore_General.sf3')
@@ -111,11 +131,12 @@ Trying out diffrent libraries which can generate sound in python
 .. raw:: html
 
     <audio controls="controls">
-      <source src="https://raw.githubusercontent.com/schuhva/Music-Generation/master/doc/releases/1.01/output.flac" type="audio/flac">
+      <source src="https://raw.githubusercontent.com/schuhva/Music-Generation/master/doc/releases/1.02/output.flac" type="audio/flac">
       Your browser does not support the <code>audio</code> element. 
     </audio>
     
-https://raw.githubusercontent.com/schuhva/Music-Generation/master/doc/releases/1.01/output.flac
+https://raw.githubusercontent.com/schuhva/Music-Generation/master/doc/releases/1.02/output.flac
+
 
 
 
