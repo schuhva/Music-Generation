@@ -23,11 +23,12 @@ pyknon
         return rad
 
 
-not yet integrated a simpele major frame in which the melody can play
+a simpele major frame in which the melody can play
 
 .. code:: python3
 
-    frame_dur = [0,2,4,5,7,9,11]     #[1,3,5,6,8,10,12]
+    frame_dur = [0,2,4,5,7,9,11,12]
+    frame_moll = [0,2,3,5,7,8,10,12]
     
     def roud_to_frame(frame, num):
         array = np.asarray(frame)
@@ -40,7 +41,7 @@ not yet integrated a simpele major frame in which the melody can play
         return n % 12
     
     def note_name(number):
-        notes = "C C# D D# E F F# G G# A A# B".split()
+        notes = "C C# D D# E F F# G G# A A# B C".split()
         return notes[mod12(number)]
 
 .. code:: python3
@@ -51,7 +52,7 @@ not yet integrated a simpele major frame in which the melody can play
     for i in range(-90,270,20):
         sin = np.sin(angel_trans(i))
         normal = (sin+1)*6
-        num = roud_to_frame(frame_dur, normal)
+        num = roud_to_frame(frame_moll, normal)
         note = note_name(num)
         seq = seq + note + " "
 
@@ -66,7 +67,7 @@ not yet integrated a simpele major frame in which the melody can play
 
 .. parsed-literal::
 
-    C C D D F G A B B B B B A G F D D C 
+    C C D D# F G G# A# C C C A# G# G F D# D C 
 
 
 pyfluidsynth
