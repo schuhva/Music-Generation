@@ -13,7 +13,13 @@ Welcome to Music-Generation's documentation!
    mark
    journal
 
-
+.. toctree::
+   :maxdepth: 2
+   :caption: Archiv:
+   :glob:
+   
+   archiv/*
+   
 
 Github
 ======
