@@ -10,8 +10,8 @@ Welcome to Music-Generation's documentation!
    :maxdepth: 2
    :caption: Contents:
    
-   journal
    mark
+   journal
 
 
 
