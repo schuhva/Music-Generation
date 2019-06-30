@@ -88,7 +88,7 @@ an audio file.
     fs.start(driver="alsa")
     
     sfid = fs.sfload("/usr/share/sounds/sf3/MuseScore_General.sf3")
-    fs.program_select(0, sfid, 0, 33)   #(tracknr , sondfontid, ??, instrumentnr)
+    fs.program_select(0, sfid, 35, 0)
     print(fs.channel_info(0))
     
     fs.noteon(0, 60, 30)
@@ -114,7 +114,7 @@ an audio file.
 
 .. parsed-literal::
 
-    (1, 0, 33, b'Fingered Bass')
+    (0, 0, 0, b'')
 
 
 midi2audio
@@ -126,7 +126,7 @@ midi to audio converter with FluidSynth
 
     from midi2audio import FluidSynth
     fs = FluidSynth('/usr/share/sounds/sf3/MuseScore_General.sf3')
-    #fs.play_midi('demo.mid')  # This runs FluidSyth with Jack. 
+    #fs.play_midi('demo.mid')
     fs.midi_to_audio('demo.mid', 'output.flac')
 
 .. raw:: html
@@ -137,30 +137,6 @@ midi to audio converter with FluidSynth
     </audio>
     
 https://raw.githubusercontent.com/schuhva/Music-Generation/master/doc/releases/1.02/output.flac
-
-
-
-FluidSynth manualy
-------------------
-
-problem with midi2audio: onyl over jack sound driver attmpt to change to
-alsa failed
-
-.. code:: python3
-
-    import subprocess
-    
-    sound_font = '/usr/share/sounds/sf3/MuseScore_General.sf3'
-    midi_file = 'demo.mid'
-    sample_rate = 44100
-    subprocess.call(['fluidsynth', '-i', sound_font, midi_file, '-r', str(sample_rate), '-a', 'pulseaudio'])
-
-
-
-
-.. parsed-literal::
-
-    0
 
 
 
