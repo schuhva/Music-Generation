@@ -26,7 +26,20 @@ Arbeitsjournal
        Sphinx und Read the Docs haben keinen eigenen Audio player. Ich erwog die OutputDateien auf Youtube hochzuladen und das Audio auf diese Weise in die Dokumentation einzubetten. Glücklicherweise habe ich noch einen weg gefunden in dem man die Dateien direkt von Github her einbettet.
 
      -
-
+	 * - 30.07.2019
+	   - 1. Audioplayer für midi-Files in python. 
+	  
+	      * midi2audio funktioniert die play funktion nur über den jack Audio-Treiber. Es muss nach jedem start den FluidSyth output mit den Lautsperchern verbunden werden.
+	      * pygame barchete ich nicht zum laufen
+	      * Den Treiber im midi2audio sourcode zu ändern barchte keinen Erfolg. Die **Lösung** ist FluidSynth "manuell" von Jupyther aus zu verwenden. 
+	      
+	     2. 
+	      
+	      
+	      
+	   
+	   -
+	 
 
 
 

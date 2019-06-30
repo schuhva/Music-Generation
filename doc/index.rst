@@ -11,6 +11,7 @@ Welcome to Music-Generation's documentation!
    :caption: Contents:
 
    journal
+   
 
 .. toctree::
    :maxdepth: 2
