@@ -169,7 +169,7 @@ otherwise FluidSyth can also used manualy. See below.
 .. raw:: html
 
     <audio controls="controls">
-      <source src="https://raw.githubusercontent.com/schuhva/Music-Generation/master/doc/releases/1.03/output.flac" type="audio/flac">
+      <source src="https://raw.githubusercontent.com/schuhva/Music-Generation/master/doc/releases/1.03/scale.flac" type="audio/flac">
       Your browser does not support the <code>audio</code> element. 
     </audio>
     
