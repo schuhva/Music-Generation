@@ -2,10 +2,13 @@
 1.03
 ====
 
-Trying out diffrent libraries which can generate sound in python
+With pyknon ex.1 , ex.2 and midi2audio I have evything to generate midi
+and to play and export them as music file. With pyknon NoteSeq funktion
+i have a usabel interface to build the farmes and so to give structure
+to the music.
 
-pyknon
-------
+pyknon ex.1
+-----------
 
 1. output only as midi
 2. has many features
@@ -13,7 +16,7 @@ pyknon
 .. code:: python3
 
     from pyknon.genmidi import Midi
-    from pyknon.music import NoteSeq
+    from pyknon.music import Rest, Note, NoteSeq
     import numpy as np
 
 .. code:: python3
@@ -69,6 +72,51 @@ a simpele major frame in which the melody can play
 
     C C D D# F G G# A# C C C A# G# G F D# D C 
 
+
+pyknon ex.2
+-----------
+
+.. code:: python3
+
+    #=== section: music generation =================================
+    def tune_A():
+        notes1 = NoteSeq(      "C4 D E F G A B C''")   # Apostroph ' = "gestrichen" = Höhe der Oktave
+        notes2 = NoteSeq("r1 r1 C4'' B' A G F E D C")   # r = rest = Pause; Zahl = Länge der Pause
+        return notes1, notes2
+    
+    def tune_B():
+        notes1 = NoteSeq("Db4- F#8 A Bb4")   # Zahl = Länge des Tones: 1=ganz, 4=Viertel
+        notes2 = NoteSeq([Note(2, dur=1/4), Note(6, dur=1/8), Note(9, dur=1/8), Note(10, dur=1/4)])
+        return notes1, notes2
+    
+    
+    def generate_midi_pyknon():
+        #--- choose the tune 
+        notes1, notes2 = tune_A()         # <<<---- select a tune <<<------
+    
+        #--- squezze ir into a MIDI framework 
+        m = Midi(2, tempo=120)     #
+        m.seq_notes(notes1, track=0)
+        m.seq_notes(notes2, track=1)
+    
+        #--- write the MIDI file 
+        midi_file_name =  "myMidi.mid"       # set the name of the file
+        m.write(midi_file_name)
+        return midi_file_name
+    
+    
+    generate_midi_pyknon()
+
+
+
+
+.. parsed-literal::
+
+    'myMidi.mid'
+
+
+
+--------------
 
 pyfluidsynth
 ------------
@@ -132,13 +180,27 @@ in Linux.
 | --> with pulseaudio it is nessecary to change the source code of
   midi2audio:
 
-replace:
-def play_midi(self, midi_file):
-    subprocess.call(['fluidsynth', '-i', self.sound_font, midi_file, '-r', str(self.sample_rate)])
-    
-with:
-def play_midi(self, midi_file):
-    subprocess.call(['fluidsynth', '-i', self.sound_font, midi_file, '-r', str(self.sample_rate), '-a', 'pulseaudio'])
+.. code:: python3
+
+    '''
+    replace:
+    def play_midi(self, midi_file):
+        subprocess.call(['fluidsynth', '-i', self.sound_font, midi_file, '-r', str(self.sample_rate)])
+        
+    with:
+    def play_midi(self, midi_file):
+        subprocess.call(['fluidsynth', '-i', self.sound_font, midi_file, '-r', str(self.sample_rate), '-a', 'pulseaudio'])
+    '''
+    ''
+
+
+
+
+.. parsed-literal::
+
+    ''
+
+
 
 otherwise FluidSyth can also used manualy. See below.
 
@@ -163,8 +225,8 @@ otherwise FluidSyth can also used manualy. See below.
         fs.midi_to_audio(midi_in, name_out)
         
         
-    midi_audio('scale.mid')
-    midi_play('scale.mid')
+    #midi_audio('scale.mid')
+    midi_play('myMidi.mid')
 
 .. raw:: html
 
