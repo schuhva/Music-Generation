@@ -165,8 +165,8 @@ an audio file.
     (1, 0, 33, b'Fingered Bass')
 
 
-Midi: Play and Generate audio-file
-----------------------------------
+Midi: Play and Generate audio-file (first solution)
+---------------------------------------------------
 
 For generating audio-files I use midi2audio.
 
@@ -259,3 +259,31 @@ FluidSynth manualy
     0
 
 
+
+Midi: Play and Generate audio-file (second and further used solution)
+---------------------------------------------------------------------
+
+This soulution offers a better sound quality and does not requier a
+change of the souce code. It uses **audacious** and **Musescore**
+
+'audacious -p -q -H myMidi.mid'
+
+'mscore -o ms.flac myMidi.mid'
+
+.. code:: python3
+
+    import subprocess
+    default_soundfont = '/usr/share/sounds/sf3/MuseScore_General.sf3'
+    
+    def midi_play(midi_in, soundfont= default_soundfont):
+        subprocess.call(['audacious', '-p', '-q', '-H', midi_in ])  # -p = play , -q = quite , -H = hide gui
+        
+    def midi_audio(midi_in, name_out = 'none', soundfont= default_soundfont):
+        if name_out == 'none' :
+            name_out = midi_in.replace('.mid', '.flac')
+        else:
+            name_out = name_out + '.flac'
+        subprocess.call(['mscore', '-o', name_out, midi_in]) # -o = export as
+    
+    midi_audio('scale.mid')
+    midi_play('myMidi.mid')
