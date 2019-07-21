@@ -84,22 +84,20 @@ python liaberys. We uses **VLC** and **Musescore**. Musescore
             name_out = name_out + '.flac'
         subprocess.call(['mscore', '-o', name_out, midi_in]) # -o = export as
     
-    def midi_svg(midi_in, name_out = 'none'):
+    def midi_png(midi_in, name_out = 'none'):
         if name_out == 'none' :
-            name_out = midi_in.replace('.mid', '.svg')
+            name_out = midi_in.replace('.mid', '.png')
         else:
-            name_out = name_out + '.svg'
+            name_out = name_out + '.png'
         subprocess.call(['mscore', '-o', name_out, '-T', '0', midi_in]) # -o = export as , -T 0 = cut page with 0 pixel
+        
         
     midi_play('tune_C.mid')
     midi_audio('tune_C.mid')
-    #midi_svg('tune_C.mid')
+    midi_png('tune_C.mid')
 
 .. raw:: html
 
-    <audio controls="controls">
-      <source src="https://raw.githubusercontent.com/schuhva/Music-Generation/master/doc/releases/1.04/tune_C.flac" type="audio/flac">
-    </audio>
-    
-    <img alt="self-Logo" src="https://raw.githubusercontent.com/schuhva/Music-Generation/master/doc/releases/1.04/tune_C-1.svg">
+    <audio controls="controls" src="https://raw.githubusercontent.com/schuhva/Music-Generation/master/doc/releases/1.04_poc/tune_C.flac" type="audio/flac"></audio>
+    <img alt="self-Logo" src="https://raw.githubusercontent.com/schuhva/Music-Generation/master/doc/releases/1.04_poc/tune_C-1.png">
  
