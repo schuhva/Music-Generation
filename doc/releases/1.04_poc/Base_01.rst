@@ -21,7 +21,7 @@ Note(value , octave , dur , volume) \* value: integer, note hight in
 semitones, 0 = middel C = midi 60 \* octave: octave number \* dur:
 duration, 0.25 = quarter note \* volume: from 1 to 127
 
-.. code:: ipython3
+.. code:: python3
 
     def tune_A():
         notes1 = NoteSeq(      "C4 D E F G A B C''")   # Apostroph ' = "gestrichen" = Höhe der Oktave
@@ -73,7 +73,7 @@ Midi: Play and Generate audio-file
 Externel players offered a better sound quality in comparison with
 python liaberys. We uses **VLC** and **Musescore**. Musescore
 
-.. code:: ipython3
+.. code:: python3
 
     import subprocess
     default_soundfont = '/usr/share/sounds/sf3/MuseScore_General.sf3'
