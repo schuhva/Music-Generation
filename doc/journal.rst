@@ -29,11 +29,11 @@ Arbeitsjournal
    * - 30.06.2019
      - Audioplayer für midi-Files in python. 
 	  
-	     * midi2audio funktioniert die play funktion nur über den jack Audio-Treiber. Es muss nach jedem start den FluidSyth output mit den Lautsperchern verbunden werden.
+       * midi2audio funktioniert die play funktion nur über den jack Audio-Treiber. Es muss nach jedem start den FluidSyth output mit den Lautsperchern verbunden werden.
 	     * pygame barchete ich nicht zum laufen
 	     * Ich konnte den Befehl für FuidSynth im sourcecode von midi2audio so abändern, dass nun Pulseaudio verwendet wird. Es könnte auch FluidSynth "manuell" von Jupyther aus zu verwenden. 
 	     
-	   - Unschöne Lösung um midi datein abspeilen zu lassen.
+     - Unschöne Lösung um midi datein abspeilen zu lassen.
 	   
 	     Muss manuel geändert werden.
 	     
