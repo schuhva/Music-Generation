@@ -14,10 +14,14 @@ the directly and manually with noteOn and noteOff commands.
 Pyknon
 ------
 
-There exist two diffrent notations one with the Note() function and in a
-simpyfied plain text version
+There exist two diffrent notations one with the **Note()** function and
+in a simpyfied **plain text** version
 
-.. code:: python3
+Note(value , octave , dur , volume) \* value: integer, note hight in
+semitones, 0 = middel C = midi 60 \* octave: octave number \* dur:
+duration, 0.25 = quarter note \* volume: from 1 to 127
+
+.. code:: ipython3
 
     def tune_A():
         notes1 = NoteSeq(      "C4 D E F G A B C''")   # Apostroph ' = "gestrichen" = Höhe der Oktave
@@ -34,8 +38,8 @@ simpyfied plain text version
         minor = [0,2,3,5,7,8,10]
         track1 = major + [12]
         track2 = minor[::-1]                           # reverse
-        notes1 = NoteSeq([Note(no) for no in track1])
-        notes2 = NoteSeq([Rest(2)]+[Note(no) for no in track2])
+        notes1 = NoteSeq( [Note(no) for no in track1] )
+        notes2 = NoteSeq( [Rest(2)] + [Note(no) for no in track2] )
         return notes1, notes2
     
     def generate_midi():
@@ -69,7 +73,7 @@ Midi: Play and Generate audio-file
 Externel players offered a better sound quality in comparison with
 python liaberys. We uses **VLC** and **Musescore**. Musescore
 
-.. code:: python3
+.. code:: ipython3
 
     import subprocess
     default_soundfont = '/usr/share/sounds/sf3/MuseScore_General.sf3'
@@ -98,6 +102,12 @@ python liaberys. We uses **VLC** and **Musescore**. Musescore
 
 .. raw:: html
 
-    <audio controls="controls" src="https://raw.githubusercontent.com/schuhva/Music-Generation/master/doc/releases/1.04_poc/tune_C.flac" type="audio/flac"></audio>
-    <img alt="self-Logo" src="https://raw.githubusercontent.com/schuhva/Music-Generation/master/doc/releases/1.04_poc/tune_C-1.png">
+    <br><audio controls="controls" src="https://raw.githubusercontent.com/schuhva/Music-Generation/master/doc/releases/1.04_poc/tune_A.flac" type="audio/flac"></audio>
+     tune_A
+    <br><audio controls="controls" src="https://raw.githubusercontent.com/schuhva/Music-Generation/master/doc/releases/1.04_poc/tune_B.flac" type="audio/flac"></audio>
+     tune_B
+    <br><audio controls="controls" src="https://raw.githubusercontent.com/schuhva/Music-Generation/master/doc/releases/1.04_poc/tune_C.flac" type="audio/flac"></audio>
+     tune_C
+    <br><img alt="self-Logo" src="https://raw.githubusercontent.com/schuhva/Music-Generation/master/doc/releases/1.04_poc/tune_C-1.png">
+    <br>tune_C
  
