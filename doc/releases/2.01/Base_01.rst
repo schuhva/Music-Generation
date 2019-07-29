@@ -110,7 +110,7 @@ controlled random
     <br><audio controls="controls" src="https://raw.githubusercontent.com/schuhva/Music-Generation/master/doc/releases/2.01/tune_I.flac" type="audio/flac"></audio>
      tune_I     
      
-     <br><img src="https://raw.githubusercontent.com/schuhva/Music-Generation/master/doc/releases/1.06/tune_I-1.png">
+     <br><img src="https://raw.githubusercontent.com/schuhva/Music-Generation/master/doc/releases/2.01/tune_I-1.png">
      tune_I   <br><br><br>
 
 **tune\_J:** Creating two tracks with the same melody but diffrent Rests
@@ -162,7 +162,7 @@ and Rythem
     <br><audio controls="controls" src="https://raw.githubusercontent.com/schuhva/Music-Generation/master/doc/releases/2.01/tune_J.flac" type="audio/flac"></audio>
      tune_J     
      
-     <br><img src="https://raw.githubusercontent.com/schuhva/Music-Generation/master/doc/releases/1.06/tune_J-1.png">
+     <br><img src="https://raw.githubusercontent.com/schuhva/Music-Generation/master/doc/releases/2.01/tune_J-1.png">
      tune_J  <br><br><br>
 
 .. code:: python3
