@@ -1,5 +1,5 @@
 
-1.04 start and basics
+1.04 Start and Basics
 =====================
 
 Pyknon offers to generate easely to generet midi files, rather to modify
@@ -15,11 +15,14 @@ Pyknon
 ------
 
 There exist two diffrent notations one with the **Note()** function and
-in a simpyfied **plain text** version
+a simpyfied **plain text** version
 
-Note(value , octave , dur , volume) \* value: integer, note hight in
-semitones, 0 = middel C = midi 60 \* octave: octave number \* dur:
-duration, 0.25 = quarter note \* volume: from 1 to 127
+Note(value , octave , dur , volume)
+
+-  value: integer, note hight in semitones, 0 = middel C = midi 60
+-  octave: octave number
+-  dur: duration, 0.25 = quarter note
+-  volume: from 1 to 127
 
 .. code:: python3
 
@@ -71,7 +74,7 @@ Midi: Play and Generate audio-file
 ----------------------------------
 
 Externel players offered a better sound quality in comparison with
-python liaberys. We uses **VLC** and **Musescore**. Musescore
+python liaberys. We uses **VLC** and **Musescore**.
 
 .. code:: python3
 
@@ -93,7 +96,7 @@ python liaberys. We uses **VLC** and **Musescore**. Musescore
             name_out = midi_in.replace('.mid', '.png')
         else:
             name_out = name_out + '.png'
-        subprocess.call(['mscore', '-o', name_out, '-T', '0', midi_in]) # -o = export as , -T 0 = cut page with 0 pixel
+        subprocess.call(['mscore', '-o', name_out, '-T', '2', midi_in]) # -o = export as , -T 0 = cut page with 0 pixel
         
         
     midi_play('tune_C.mid')

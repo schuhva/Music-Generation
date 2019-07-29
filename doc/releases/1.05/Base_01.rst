@@ -17,11 +17,14 @@ Pyknon
 There exist two diffrent notations one with the **Note()** function and
 in a simpyfied **plain text** version
 
-**Note(value , octave , dur , volume)** \* value: integer, note hight in
-semitones, 0 = middel C = midi 60 \* octave: octave number \* dur:
-duration, 0.25 = quarter note \* volume: from 1 to 127
+**Note(value , octave , dur , volume)**
 
-**Instruments** Available are at lest the 128 General-Midi (GM)
+-  value: integer, note hight in semitones, 0 = middel C = midi 60
+-  octave: octave number
+-  dur: duration, 0.25 = quarter note
+-  volume: from 1 to 127
+
+**Instruments:** Available are at least the 128 General-Midi (GM)
 Instruments. Depending on the sound-fonts there is a bigger choise. A
 list of the GM instruments can be found here.
 https://en.wikipedia.org/wiki/General\_MIDI#Program\_change\_events
@@ -34,7 +37,7 @@ Remeber to substract 1 as the list starts with 1 and not 0.
     
     
     def tune_D():    
-        tune_name = 'tune_D'   # A row of maj chords
+        tune_name = 'tune_D'   # A row of major chords
         notes1 = NoteSeq( [Note(no) for no in major] )
         notes2 = NoteSeq( [Note(no +4) for no in major] )
         notes3 = NoteSeq( [Note(no +7) for no in major] )
@@ -44,7 +47,7 @@ Remeber to substract 1 as the list starts with 1 and not 0.
     
     def tune_E():    
         tune_name = 'tune_E'            # somtimes forming diatonic chords
-        major2 = major[:-1] + major[::-1]  # cut last element and reverse
+        major2 = major[:-1] + major[::-1]  # cut last element and adding the reverse
         notes1 = NoteSeq( [Note(no) for no in major2] )
         notes2 = NoteSeq( [Rest(0.5)] + [Note(no) for no in major2] )
         notes3 = NoteSeq( [Rest(1)]   + [Note(no) for no in major2] )
@@ -72,7 +75,7 @@ Midi: Play and Generate audio-file
 ----------------------------------
 
 Externel players offered a better sound quality in comparison with
-python liaberys. We uses **VLC** and **Musescore**. Musescore
+python liaberys. We uses **VLC** and **Musescore**
 
 .. code:: python3
 
@@ -113,10 +116,9 @@ python liaberys. We uses **VLC** and **Musescore**. Musescore
     <br><audio controls="controls" src="https://raw.githubusercontent.com/schuhva/Music-Generation/master/doc/releases/1.05/tune_E.flac" type="audio/flac"></audio>
      tune_E
      
-    <br><img alt="self-Logo" src="https://raw.githubusercontent.com/schuhva/Music-Generation/master/doc/releases/1.05/tune_E-1.png">
+    <br><img src="https://raw.githubusercontent.com/schuhva/Music-Generation/master/doc/releases/1.05/tune_E-1.png">
      tune_E (the saxaphone is a transposing instrument)
      
 
 
  
-
