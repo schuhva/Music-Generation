@@ -14,7 +14,7 @@ Welcome to Music-Generation's documentation!
    
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: Releases:
    :glob:
    :reversed:
