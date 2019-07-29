@@ -156,6 +156,8 @@ python liaberys. We use **VLC** and **Musescore**
     <br><img alt="self-Logo" src="https://raw.githubusercontent.com/schuhva/Music-Generation/master/doc/releases/1.06/tune_G-1.png">
      tune_G (the saxaphone is a transposing instrument)
      
+     Unfortunately I couldn't print it as 6/8 time signature, as it should be.
+     
 
 
  
