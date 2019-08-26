@@ -51,6 +51,23 @@ Arbeitsjournal
        
      - Als nächstes: Ton-Längen definiren. 
      
+   * - 30.07.2019
+     - Version 1.06
+     
+       * tune_g is very similar to tune_e. It was extended such that the Volume and the note length can be defined for each note. 
+       * tune_h is is still based on a scale. But on each note e specific Ornament is played. 
+       
+       Verion 2.01: EInführung von ersten Zufällen
+       
+       * Zu erst wird mit gesteuertem Zufall bestimmt ob eine note durch eine Pause ersetzt wird. Gesteuert dadurch weil nicht eine 50/50 Chanse besteht, sondern eine indivduell einstellbare. im Bsp. tune_I werden die Noten längen ebenfalls duch gesteurtem Zufall bestimmt. 
+       
+     -
+     
+     
+   * -
+     -
+     -
+     
 
 
 
