@@ -70,8 +70,7 @@ zero.
      tune_H     <br><br><br>
      
 
-**tune\_I:** Rythem more accurate the note-duration is defined by
-controlled random
+**tune\_I:** The note-duration is defined by controlled random
 
 .. code:: python3
 
