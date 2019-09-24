@@ -65,19 +65,27 @@ Arbeitsjournal
      
      
    * - 24.08.2019
-     - Version 2.02
+     - Version 2.02 tune_K
      
        Erstellung von komplett zufälliger Melodie in einem Berich von etwas mehr als zwei Oktaven. 
      -
      
    * - 26.08.2019
-     - Version 2.02 tune_L
+     - Version 2.03 tune_L
      
        Einführung der Melodie-Bildung nach Interwallen und nicht asoluten Noten. So werden grosse Sprünge vermieden welche seltener in Der Musik vor kommen. Stufengänge kommen häufig vor da die Warscheidlichkeit einer Sekunde im Vergleich zu anderen Interwallen grösser ist.
        
-       Version 2.02 tune_K
+       Version 2.03 tune_M
        
        In Entwicklung: Melodie-Bildung nach Intervallen in eine Funktion überführen. Zwei Stimmig. Erweiterte Intervalle.
+     -
+     
+   * - bis 17.09.2019
+     - Version 2.03 tune_O
+     
+       Automatische Skalen- und Akkordgenerirung für den ganzen Midi-Range.
+       
+       Anpaasungen an der soundfont. Vervende nun "Compifont" und nicht mehr die Musecore Font.
      -
      
    * -
