@@ -19,7 +19,7 @@ Welcome to Music-Generation's documentation!
    :glob:
    :reversed:
    
-   releases/*/*
+   releases/*/*/*
    
 
 Github
