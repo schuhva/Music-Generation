@@ -6,6 +6,23 @@ In the Previous exampel the melody could get **off track** and get
 further away from the **good sounding instument range.** It was also
 possile that it left the scale and created an error.
 
+The Melody generation has new concept. The **intervals are now genereted
+step by step (intvl\_next**) with an for-loop. Each interval is first
+added to the melody and then checked for acceptance.
+
+The **range provids the aceptance values** over the seven Midi-Octaves.
+At the monent a liniar range is used, but it could be easily be changeed
+in a Beta-Curve.
+
+The **aceptance funktion** decides wheter the **proposed interval is
+acepted** or if an new proposal must be made. 1) first the acceptance
+values of the current and proposed note are read out of the range. 2)
+then the aceptance value of the curent note is divided by the aceptance
+value ofe the puposed note. 3) This quotient is compared with an random
+number from 0 to 1. If Quotient > Random nuber Proposed interval is
+accepted. Otherwise an new propositon is requested. This is an
+**Metropolis-Hasting Algorythem**.
+
 .. code:: python3
 
     from pyknon.genmidi import Midi
@@ -13,41 +30,33 @@ possile that it left the scale and created an error.
     import numpy as np
     import matplotlib.pyplot as plt
 
+
+
 **Instruments:** Available are at lest the 128 General-Midi (GM)
 Instruments. Depending on the sound-fonts there is a bigger choise. A
 list of the GM instruments can be found here.
 https://jazz-soft.net/demo/GeneralMidi.html
 
-
-
-.. code:: python3
-
-    from IPython.display import Image
-    Image("Midi_range.jpg")
-
-
-
-
-.. image:: output_4_0.jpeg
-
-
-
 .. code:: python3
 
     major = np.array([ 0, 2, 4, 5, 7, 9, 11])
-    minor = np.array([ 0, 2, 3, 5, 7, 8, 10])  
+    minor = np.array([ 0, 2, 3, 5, 7, 8, 10])
+    blues = np.array([ 0, 3, 5, 6, 7, 10])
     C7 = np.array([ 0, 4, 7, 10]) 
-    var   = np.array([1,2,-1])
-    var2  = np.array([0,2,-1])
-    var3  = np.array([0,-1,2])
+    CM7 = np.array([ 0, 4, 7, 11])
     
-    def scale_create(tones):   # Creats a scale over the hole midi Range from C-2 to C-7 (midi notes: 0-120)
+    
+    def scale_create(tones):
         tones = np.asarray(tones)   # tones which form chord or scale in the first octave (0-11)
+        if any(tones > 11):             # tones over one octave?
+            tones = np.mod(tones,12)    # set the thones in one octave
+            tones = np.sort(tones)      # sort the tones new
+            tones = np.unique(tones)    # remove duplicate tones
         octave = np.repeat( np.linspace(0,108, num=10), len(tones))
         scale = np.add( octave, np.tile(tones, 10)) # add element wise octave and note
         return scale.astype(int)
         
-    def fade(start,end,steps):
+    def fade(start,end,steps):  # currently not in use
         fade = np.around( np.linspace(start,end,num=steps))
         fade = fade.astype(int)
         return fade
@@ -66,7 +75,7 @@ https://jazz-soft.net/demo/GeneralMidi.html
         volumes = np.r_[np.random.choice(volume, size=melody_len, p=prob_volume)]
         return volumes
     
-    def intvl_melody(intvl, prob_intvl, melody_len):  #Interval Melody  
+    def intvl_melody(intvl, prob_intvl, melody_len):  #Interval Melody  # currently not in use 
         intvl = np.asarray(intvl)            # Possible interval
         prob_intvl = np.asarray(prob_intvl)         # Probability of each interval
         prob_intvl = prob_intvl/np.sum(prob_intvl)
@@ -74,43 +83,35 @@ https://jazz-soft.net/demo/GeneralMidi.html
         imelody = np.cumsum(intervals)
         return imelody
 
-**liniar\_range:** Generates an range in which the instrument can play.
+**liniar\_range:** Generates the aceptance values. They define the range
+in which the instrument can play.
 
 .. code:: python3
 
-    def liniar_range(r_start, r_top, r_edge, r_end): # acceptance range of the instrument 
+    def liniar_range(r_start, r_top, r_edge, r_end, title): # acceptance range of the instrument 
         h = 100 # hight of acceptance function
         a_range = np.zeros(121, dtype=int)  # only to midi =120 as 127 is not a complete octave
         np.put(a_range, range(r_start,r_top),  np.linspace(0,h, num=(r_top -r_start)) )
         np.put(a_range, range(r_top, r_edge),  np.linspace(h,h, num=(r_edge-r_top  )) )
         np.put(a_range, range(r_edge, r_end),  np.linspace(h,0, num=(r_end -r_edge )) )
-    
+        
         fig, ax = plt.subplots()
         ax.plot(range(121), a_range)
+        plt.title(str(title)+':  '+str([r_start, r_top, r_edge, r_end]))
         plt.show()
-        return
+        return a_range
         
-    liniar_range(36,48,72,84)
-    
-
-
-
-
-.. image:: output_7_0.png
-
 
 **i\_last\_note:** finds de i value of the last not in the actual scale.
 
 .. code:: python3
 
-    def i_last_note(melody, scale):
-        try: 
-            i_note = np.argwhere(scale== melody[-1])[0]
-        except:
-            print('not same scale')
-            
-        
+    def i_last_note(note, scale):
+        i_note = (np.abs(scale - note)).argmin()
         return i_note
+
+**intvl\_next** is a modification of intvl\_melody. But it does only
+creats **one** interval and not an array/melody in one time.
 
 .. code:: python3
 
@@ -118,16 +119,45 @@ https://jazz-soft.net/demo/GeneralMidi.html
         intvl = np.asarray(intvl)            # Possible interval
         prob_intvl = np.asarray(prob_intvl)         # Probability of each interval
         prob_intvl = prob_intvl/np.sum(prob_intvl)
-        interval = np.r_[np.random.choice(intvl, size=1, p=prob_intvl)]
-        return interval
+        interval = np.random.choice(intvl, size=1, p=prob_intvl)
+        return interval[0]
+
+**aceptance** decides with an Metropolis-Hasting Algorythem wheter the
+Proposed not is acepted.
+
+.. code:: python3
+
+    # x is the aceptance value of the current note, while x_new is it from the proposoal note. 
     
-    intvl_next([-2,-1, 0, 1, 2],[2, 4, 1, 4, 2])
+    def acceptance(x, x_new):
+        if x_new < 1:
+            if x < 1:
+                print('start_note not in range')
+                return 
+        quot = x_new/x
+        if quot >= 1: return True
+        if np.random.uniform(0,1)< quot: return True
+        else: return False
+      
 
+.. code:: python3
 
-.. parsed-literal::
-
-    [-1]
-
+    def acceptance_melody(intvl, prob_intvl, scale, start_note, a_range, melody_len):
+        melody = np.zeros(melody_len, dtype=int)
+        melody[0] = scale[i_last_note(start_note,scale)]
+    
+        for npn in range(1, melody_len):  
+            accept = False    
+            while not accept:       # aslong acept == False
+                inote = i_last_note(melody[npn-1],scale)
+                inote_next = inote + intvl_next(intvl, prob_intvl)
+                accept_val = a_range[[melody[(npn-1)],scale[inote_next]]]
+                accept = acceptance(accept_val[0],accept_val[1])
+            melody[npn] = scale[inote_next]
+        print('melody:',melody)
+        return melody
+                
+            
 
 **tune\_P:** Changing the scale creating methode.
 
@@ -135,45 +165,35 @@ https://jazz-soft.net/demo/GeneralMidi.html
 
     def tune_P():
         tune_name = 'tune_P'  
-        np.random.seed(23)
-        melody_len = 40
-        scale = scale_create(C7)
-        i_tone_zero = np.argwhere(scale==60)[0]
+        #np.random.seed(23)
+        melody_len = 60
+        scale = scale_create(blues)
         
-        melody1 = scale[4+ i_tone_zero + intvl_melody([-2,-1, 0, 1, 2],[2, 4, 1, 4, 2], melody_len)]
-        rythem1 = ran_duration([1/8, 1/4,1/2], [1,2,1], melody_len)
-        volumes1 = ran_volume([0,120], [1,5], melody_len )
-        
-        melody2 = scale[ i_tone_zero + intvl_melody([-2,-1, 0, 1, 2],[4, 2, 1, 2, 4], melody_len)]
-        rythem2 = ran_duration([1/8, 1/4,1/2], [1,2,1], melody_len)
-        volumes2 = ran_volume([0,100], [1,6], melody_len )
-    
-        melody3 = scale[-6+ i_tone_zero + intvl_melody([-1, 0, 1],[2, 1, 2], melody_len)]
-        rythem3 = ran_duration([1/8, 1/4,1/2], [1,2,1], melody_len)
-        volumes3 = ran_volume([0,100], [0,4], melody_len )
+        range_1 = liniar_range(48,56,72,78,'Range1')
+        melody1 = acceptance_melody([-2,-1, 0, 1, 2],[1, 3, 1, 3, 1],scale, 60, range_1, melody_len)
+        rythem1 = ran_duration([1/8, 1/4,1/2], [4,2,1], melody_len)
+        volumes1 = ran_volume([0,120], [1,8], melody_len )
     
         notes1 = NoteSeq( [Note(no,octave=0, dur=du, volume=vo) for no,du,vo in zip(melody1,rythem1,volumes1)] )
-        notes2 = NoteSeq( [Note(no,octave=0, dur=du, volume=vo) for no,du,vo in zip(melody2,rythem2,volumes2)] )
-        notes3 = NoteSeq( [Note(no,octave=0, dur=du, volume=vo) for no,du,vo in zip(melody3,rythem3,volumes3)] )
-        
-        instruments = [60,3,32]
-        notes = [notes1,notes2,notes3]
+    
+        instruments = [24]
+        notes = [notes1]
         return notes, instruments,tune_name
 
 .. raw:: html
 
-    <br><audio controls="controls" src="https://raw.githubusercontent.com/schuhva/Music-Generation/master/doc/releases/2.04/tune_O.flac" type="audio/flac"></audio>
-     tune_     
+    <br><audio controls="controls" src="https://raw.githubusercontent.com/schuhva/Music-Generation/master/doc/releases/2.05/tune_P.flac" type="audio/flac"></audio>
+     tune_P    
      
-     <br><img src="https://raw.githubusercontent.com/schuhva/Music-Generation/master/doc/releases/2.03/tune_M-1.png">
-     tune_M  <br><br><br>
+     <br><img src="https://raw.githubusercontent.com/schuhva/Music-Generation/master/doc/releases/2.05/tune_P-1.png">
+     tune_P  <br><br><br>
 
 .. code:: python3
 
     
     def gen_midi():
     #     squezze into a MIDI framework
-        notes, instruments, tune_name = tune_O() #  <--- select a tune  <<--     <<<<<<<<<--- select a tune -----
+        notes, instruments, tune_name = tune_P() #  <--- select a tune  <<--     <<<<<<<<<--- select a tune -----
         nTracks = len(notes)
         
         m = Midi(number_tracks=nTracks, tempo=120, instrument=instruments)
@@ -223,3 +243,19 @@ the Gui in the preferences.
     midi_play(midi_file_name)
     midi_audio(midi_file_name)
     midi_png(midi_file_name)
+
+
+
+.. image:: output_20_0.png
+
+
+.. parsed-literal::
+
+    melody: [60 55 60 58 60 55 54 55 58 60 60 65 66 63 66 63 66 67 70 67 70 72 70 72
+     67 72 72 70 72 70 72 72 67 67 67 67 67 72 70 75 72 70 70 72 70 72 70 67
+     70 66 70 70 67 70 66 65 65 63 66 63]
+
+
+
+
+

@@ -18,7 +18,7 @@ list of the GM instruments can be found here.
 https://jazz-soft.net/demo/GeneralMidi.html
 
 **scale\_create:** Creats a scale over the hole midi Range from C-2 to
-C-7 (midi notes: 0-120). Input is the scale or c chord of one octave
+C-7 (midi notes: 0-120). Input is the scale or a chord of one octave.
 
 .. code:: python3
 
@@ -31,6 +31,11 @@ C-7 (midi notes: 0-120). Input is the scale or c chord of one octave
     
     def scale_create(tones):
         tones = np.asarray(tones)   # tones which form chord or scale in the first octave (0-11)
+        if any(tones > 11):             # tones over one octave?
+            tones = np.mod(tones,12)    # set the tones in one octave
+            tones = np.sort(tones)      # sort the tones new
+            tones = np.unique(tones)      # remove duplicate tones
+            print(tones)
         octave = np.repeat( np.linspace(0,108, num=10), len(tones))
         scale = np.add( octave, np.tile(tones, 10)) # add element wise octave and note
         return scale.astype(int)
@@ -156,3 +161,4 @@ the Gui in the preferences.
     midi_play(midi_file_name)
     midi_audio(midi_file_name)
     midi_png(midi_file_name)
+
