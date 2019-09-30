@@ -159,5 +159,3 @@ Plot data
     5 Precip
     6 H_rel
     7 V_wind
-
-
