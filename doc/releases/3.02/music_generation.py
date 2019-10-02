@@ -1,3 +1,12 @@
+from pyknon.genmidi import Midi
+from pyknon.music import Rest, Note, NoteSeq
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import matplotlib.ticker as plticker
+from datetime import date
+
+
 # [[[[[[[[[[[[[[[[[[[   -- Functions for Music Generation --    ]]]]]]]]]]]]]]]]]]]
 
 def scale_create(tones):

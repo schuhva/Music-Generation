@@ -1,9 +1,9 @@
 
-3.01.2 First meteo data
-=======================
+3.02 Sync voices
+================
 
--  Starting with just implement one voice. The meteo data is first
-   transformed befor the diffrence os taken and so creat the intervals.
+-  The voices are now syncronized
+-  Each voice has an own rolling mean window and scale factor
 -  Functions which ar no longer part of this development step are
    **exported to the music\_generation.py file.** The file is found at
    the **end** of the page.
@@ -12,7 +12,7 @@
 
     from pyknon.genmidi import Midi
     from pyknon.music import Rest, Note, NoteSeq
-    import music_generation
+    from music_generation import *
     import numpy as np
     import pandas as pd
     import matplotlib.pyplot as plt
@@ -25,8 +25,6 @@ Transform Meteo data
 .. code:: python3
 
     def scale(a):    return (a-a.min())/(a.max()-a.min())
-    h24 = 6*24
-    h72 = 3*h24
     
     def read_meteo_data(fName):
         colNames = ['Stao','time', 'Flash', 'p_QNH', 'T_2m', 'Precip', 'H_rel', 'V_wind']  
@@ -58,55 +56,27 @@ Transform Meteo data
     NT, MP 2016 8
 
 
-meteo data has **noise.** Also are the value diffrence in the 10 min
-mesurement interval not that big.
-
-**w defines the sampling rate**. But k also defines the size of the
-moving avrage. With this method evry value is used once.
-
-As we want intervals, the diffrence is taken. But the intervals are
-first multipyed with a factor to have a suitebal range of intervals.
+**met\_transform** \* the **rolling mean** is to remove noise on the
+data. \* the **factors** are used to scale the melody, such that it
+plays in a certain range \* **start** defins the staring point of the
+melodies by removing the begin of the data
 
 .. code:: python3
 
-    k=4  #Column number
-    w = 6 # how many values are used for the mean
-    Yw  = np.array(dM[dM.columns[k]].rolling(window=w,center=True).mean()) 
-    Yw= Yw[0:1000:w]
-    trans = np.diff(Yw)[1:]
-    trans = trans*1.3
-    trans = np.round(trans)
-    #trans = np.nancumsum(trans)
-    trans = trans.astype(int)
-    print(trans)
-    #print(len(trans))
-    
-    plt.plot(trans)
-    #t(trans,bins=50)
-
-
-.. parsed-literal::
-
-    [ 1  1  0  0 -1  2  3  2  1  1  1  1  0 -1 -1 -1 -3 -2 -1  1 -1 -1  0 -1
-     -1 -1  0 -1  1  2  1  0  2  0  0  2  1  0  0  0 -2 -4 -2  0 -2 -1 -1  0
-     -1 -1  0 -1  3  2  3  2  2  2  1  2  0  0  0 -1 -3 -4 -3 -1 -1 -1  0 -1
-     -1 -1  0  0  2  3  3  3  2  2  1  1  2 -1 -2 -1 -1 -3 -2 -1 -1 -2 -1  0
-      0  0  2  0  1  1  0 -1  2  1  2  1  1  0 -2 -2 -1 -2 -2  0  0  0  0  0
-      0  0  0  0  0  0  1  0  0 -1  1  0  0  0  0 -1  0 -1 -2 -1 -2  0 -1 -2
-     -1  0  0  1  1  1  2  3  3  3  2  1  0  0  0 -1 -3 -5 -2 -1 -2]
-
-
-
-
-.. parsed-literal::
-
-    [<matplotlib.lines.Line2D at 0x7efc246d1048>]
-
-
-
-
-.. image:: output_5_2.png
-
+    def met_transform(dM,factors,means,start):
+        col_nr = dM.shape[1]-2
+        start = int(start*6)
+        cut_border = np.trunc((np.amax(means))/2).astype(int)   # calculate nr of nan at the border because of the rolling mean
+        cut_begin = np.amax([cut_border,start])
+        trans = np.zeros((col_nr, (dM.shape[0]  -cut_border -cut_begin))) 
+        if col_nr != len(factors) or col_nr != len(means): print('dM,factor,mean not same length')
+        
+        for nr,factor, mean in zip(range(col_nr),factors,means):                                          
+            Yw  = np.array(dM[dM.columns[nr +2]].rolling(window=mean,center=True).mean()) # nr+2 the first two colums are location and date.
+            Yw = Yw * factor
+            trans[nr] = Yw[cut_begin: -cut_border]  # remove nan at begining and end. because of rolling mean
+            
+        return trans
 
 **Chords and scales**
 
@@ -121,65 +91,89 @@ first multipyed with a factor to have a suitebal range of intervals.
     C   = np.array([ 0, 4, 7])
     bass= np.array([ 0])
 
-Tune T
+Tune U
 ------
 
-The intervals of the meteo-date are set in scale and played
+This tune uses the wind and temperature data, starting after 80 hours
+--> 30.8.2019
 
 .. code:: python3
 
-    def meteo_melody(met_intvl, pattern, start_note, a_range, notenr, rythem):
+    def meteo_melody(meteo, pattern, start_note, a_range, notenr, rythem,mpb):
         melody = np.zeros(notenr, dtype=int)
-        cum_rythem = np.cumsum(rythem) *4
-        cum_rythem = np.concatenate(([0],cum_rythem))[:-1] # add 0 at beginig remove last element
+        cum_rythem = np.cumsum(rythem) *4             
+        cum_rythem = np.concatenate(([0],cum_rythem)) # add 0 at beginig 
+        
         scale_change = pattern[:,0]
         scale_nr =0
         scale = pattern[scale_nr,1]
         melody[0] = scale[i_last_note(start_note,scale)]
-        cummelody = i_last_note(start_note,scale)+np.nancumsum(met_intvl)
-        #print(cummelody)
         
         for npn in range(1, notenr):  #npn: note per note (index)      
+            
             scale_nr = np.ravel(np.argwhere(scale_change <= cum_rythem[npn-1])) [-1]     
             scale = pattern[scale_nr,1]
-            inote_next = cummelody[npn-1]
-            #print(inote_next,scale)
-            melody[npn] = scale[inote_next]
+            
+            # find interval
+            met_resolution = 10
+            inter = np.asarray([cum_rythem[npn-1], cum_rythem[npn]])  # get beat_nr's 
+            inter = np.round((inter*mpb)/met_resolution).astype(int)  # calulate index of the data array
+            intvl = meteo[inter[1]] - meteo[inter[0]]                 # take the diffrence of the data
+            intvl = np.round(intvl).astype(int)                       # round to an int
+            
+            inote_befor = i_last_note(melody[npn-1],scale)    # get i in the scale of the last note
+            inote = inote_befor + intvl                       # calculate i in scale of note    
+            melody[npn] = scale[inote]                        # set in to melody
+             
         #print(melody)
+        plt.plot(cum_rythem[1:],melody) ; plt.xlabel= ('beat nr.'); plt.ylabel=('midi note nr')
         return melody
 
 .. code:: python3
 
-    def tune_T():
-        tune_name = 'tune_T'  
+    def tune_U():
+        tune_name = 'tune_U'  
         #np.random.seed(23)
         bar, bpb = 12, 4  # bar: Takt , bpb: beat per bar
         melody_len = bar * bpb
-    
-    
-        #scales = [[1,CM7],[1,Cm7+9],[1,Cm7+2],[1,C7+7]] #rythem Change
+        mpb = 70   #minutes per beat.
+        start = 79.5      # start in hours 
+        
+        trans = met_transform(dM,[1,2.5,0.8,1,0.3,4.5],[6,6,6,6,6,2],start)
+        #plt.plot(trans[5,:300])
+        #np.set_printoptions(threshold=np.inf)
+        #print(trans[1,::20])
+        
+        
+        scales = [[1,CM7],[1,Cm7+9],[1,Cm7+2],[1,C7+7]] #rythem Change
         #scales = [[4,C7],[2,C7+5],[2,C7],[1,C7+7],[1,C7+5],[2,C7]] # Blues  
-        scales = [[8,major]]
+        scales = [[8,minor]]
         pattern = pattern_gen(scales, melody_len)
         
         range_1 = liniar_range(44,51,70,76)
-        rythem1, notenr_1 = ran_duration([1/8, 1/4,1/2], [1,3,1], melody_len)
-        melody1 = meteo_melody(trans,pattern, 60, range_1, notenr_1, rythem1)
+        rythem1, notenr_1 = ran_duration([1/16,1/8, 1/4,1/2], [2,4,1,0], melody_len)
+        melody1 = meteo_melody(trans[5],pattern, 72, range_1, notenr_1, rythem1,mpb)
         volumes1 = ran_volume([0,120], [1,8], notenr_1 )
         notes1 = NoteSeq( [Note(no,octave=0, dur=du, volume=vo) for no,du,vo in zip(melody1,rythem1,volumes1)] )
-           
+        
+        range_2 = liniar_range(44,51,70,76)
+        rythem2, notenr_2 = ran_duration([1/16,1/8, 1/4,1/2], [0,2,3,2], melody_len)
+        melody2 = meteo_melody(trans[4],pattern, 65, range_2, notenr_2, rythem2,mpb)
+        volumes2 = ran_volume([0,120], [1,8], notenr_2 )
+        notes2 = NoteSeq( [Note(no,octave=0, dur=du, volume=vo) for no,du,vo in zip(melody2,rythem2,volumes2)] )
+    
         
         #plot_range([range_1],['range_1'],tune_name)
-        instruments = [51]
-        notes = [notes1]
+        instruments = [10,49]
+        notes = [notes1,notes2]
         return notes, instruments,tune_name
 
 .. raw:: html
 
-    <br><audio controls="controls" src="https://raw.githubusercontent.com/schuhva/Music-Generation/master/doc/releases/3.01/tune_T.flac" type="audio/flac"></audio>
-     tune_T  
+    <br><audio controls="controls" src="https://raw.githubusercontent.com/schuhva/Music-Generation/master/doc/releases/3.02/tune_U.flac" type="audio/flac"></audio>
+     tune_U
      
-     <br><img src="https://raw.githubusercontent.com/schuhva/Music-Generation/master/doc/releases/3.01/tune_T-1.png">
+     <br><img src="https://raw.githubusercontent.com/schuhva/Music-Generation/master/doc/releases/3.02/tune_U-1.png">
      tune_T  <br><br><br>
 
 **Instruments:** Available are at lest the 128 General-Midi (GM)
@@ -194,7 +188,7 @@ Generate Midi and Audio file
 
     def gen_midi():
     #     squezze into a MIDI framework
-        notes, instruments, tune_name = tune_T() #  <--- select a tune  <<--     <<<<<<<<<--- select a tune -----
+        notes, instruments, tune_name = tune_U() #  <--- select a tune  <<--     <<<<<<<<<--- select a tune -----
         nTracks = len(notes)
         
         m = Midi(number_tracks=nTracks, tempo=120, instrument=instruments)
@@ -217,6 +211,11 @@ Generate Midi and Audio file
 
 
 
+.. image:: output_15_0.png
+
+
+
+
 External **Music\_Generation** library
 --------------------------------------
 
@@ -225,4 +224,3 @@ first explaind above. This is a copy of music\_generation.py
 
 .. literalinclude:: music_generation.py
    :language: python
-
