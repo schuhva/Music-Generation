@@ -178,13 +178,10 @@ https://jazz-soft.net/demo/GeneralMidi.html
         pattern = np.delete(pattern, np.argwhere(pattern[:,0] >= melody_len) ,0)     # remove if end is 0 bars
         return pattern
 
-**tune\_V:**
-
--  A Ending Chord change is defined. It replaces the normal pattern at
-   the end.
--  the first voice has a diffrent pattern. It palys on the Blues scale.
--  Three Piano voices play in a range of an octave and generete together
-   the chords of the extended Blues scheme
+**tune\_V:** \ 
+* A Ending Chord change is defined. It replaces the normal pattern at the end. \
+* the first voice has a diffrent pattern. It plays on the Blues scale. 
+* Three Piano voices play in a range of an octave and generete together the chords of the extended Blues scheme
 
 .. code:: python3
 
