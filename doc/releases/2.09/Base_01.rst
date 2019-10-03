@@ -101,7 +101,7 @@ tune\_2.09\_A
     <br><audio controls="controls" src="https://raw.githubusercontent.com/schuhva/Music-Generation/master/doc/releases/2.09/tune_209_A.flac" type="audio/flac"></audio>
      tune__209_A
      
-     <br><img src="https://raw.githubusercontent.com/schuhva/Music-Generation/master/doc/releases/2.09/tune_209_B-1.png">
+     <br><img src="https://raw.githubusercontent.com/schuhva/Music-Generation/master/doc/releases/2.09/tune_209_A-1.png">
      tune_209_A <br><br><br>
 
 tune\_2.09\_B
@@ -239,7 +239,7 @@ tune\_2.09\_C
 
 .. raw:: html
 
-    <br><audio controls="controls" src="https://raw.githubusercontent.com/schuhva/Music-Generation/master/doc/releases/2.09/tune_209_D.flac" type="audio/flac"></audio>
+    <br><audio controls="controls" src="https://raw.githubusercontent.com/schuhva/Music-Generation/master/doc/releases/2.09/tune_209_C.flac" type="audio/flac"></audio>
      tune__209_C
      
      <br><img src="https://raw.githubusercontent.com/schuhva/Music-Generation/master/doc/releases/2.09/tune_209_C-1.png">
