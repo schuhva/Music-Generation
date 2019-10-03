@@ -74,19 +74,33 @@ def ran_duration(duration, prob_duration, melody_len):
         rythem = np.append(rythem,note_len)
     return rythem , len(rythem)
 
-#   pattern_gen takes the chord pattern (scales): it reapeats the pattern as long the melody is, and generates the beat number where the chords change.
-def pattern_gen(scales,melody_len):
-    scales = np.asarray(scales)
+#   pattern_gen takes the chord pattern (scales): it reapeats the pattern as long the melody is, and generates the beat number where the chords change. 
+# it also adds the end pattern
+def pattern_gen(scales,end_scale, melody_len):
     bpb = 4  # beats per bar
+    
+#--scales
+    scales   = np.asarray(scales)
     factor = int(np.trunc(melody_len/(np.sum(scales[:,0]) * bpb)) + 1) # factor rounded up: how many times is the pattern used
     change_times = np.cumsum(np.tile(scales[:,0],factor)) * bpb        # create change time list with factor
     change_times = np.concatenate((np.asarray([0]),change_times))[:-1] # add 0 at beginig remove last element
     
-    for i in range(len(scales)):         # send scales to scale_create
+    for i in range(len(scales)):          # send scales to scale_create
         scales[i,1] = scale_create(scales[i,1])
     pattern = np.tile(scales,(factor,1))   # tile the scales as long the melody is
-    pattern[:,0] = change_times    #insert change_times into scales
-    pattern = np.delete(pattern, np.argwhere(pattern[:,0] >= melody_len) ,0) # remove unneeded scales
+    pattern[:,0] = change_times            #insert change_times into scales
+    
+#--end_scales
+    end_scale= np.asarray(end_scale)
+    end_times = melody_len - np.cumsum(( end_scale[:,0]*bpb )[::-1])[::-1]   # reversed cumsum subtracted of melody_len
+    end_scale[:,0] = end_times              #insert end_times into en_scale
+    for i in range(len(end_scale)):         # send end_scale to scale_create
+        end_scale[i,1] = scale_create(end_scale[i,1])
+
+#--merge
+    pattern = np.delete(pattern, np.argwhere(pattern[:,0] >= end_scale[0,0]) ,0) # remove unneeded scales
+    pattern = np.concatenate((pattern,end_scale),axis=0)
+    pattern = np.delete(pattern, np.argwhere(pattern[:,0] >= melody_len) ,0)     # remove if end is 0 bars
     return pattern
 
    
