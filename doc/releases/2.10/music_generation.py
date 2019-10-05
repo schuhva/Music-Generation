@@ -74,34 +74,7 @@ def ran_duration(duration, prob_duration, melody_len):
         rythem = np.append(rythem,note_len)
     return rythem , len(rythem)
 
-#   pattern_gen takes the chord pattern (scales): it reapeats the pattern as long the melody is, and generates the beat number where the chords change. 
-# it also adds the end pattern
-def pattern_gen(scales,end_scale, melody_len):
-    bpb = 4  # beats per bar
-    
-#--scales
-    scales   = np.asarray(scales)
-    factor = int(np.trunc(melody_len/(np.sum(scales[:,0]) * bpb)) + 1) # factor rounded up: how many times is the pattern used
-    change_times = np.cumsum(np.tile(scales[:,0],factor)) * bpb        # create change time list with factor
-    change_times = np.concatenate((np.asarray([0]),change_times))[:-1] # add 0 at beginig remove last element
-    
-    for i in range(len(scales)):          # send scales to scale_create
-        scales[i,1] = scale_create(scales[i,1])
-    pattern = np.tile(scales,(factor,1))   # tile the scales as long the melody is
-    pattern[:,0] = change_times            #insert change_times into scales
-    
-#--end_scales
-    end_scale= np.asarray(end_scale)
-    end_times = melody_len - np.cumsum(( end_scale[:,0]*bpb )[::-1])[::-1]   # reversed cumsum subtracted of melody_len
-    end_scale[:,0] = end_times              #insert end_times into en_scale
-    for i in range(len(end_scale)):         # send end_scale to scale_create
-        end_scale[i,1] = scale_create(end_scale[i,1])
 
-#--merge
-    pattern = np.delete(pattern, np.argwhere(pattern[:,0] >= end_scale[0,0]) ,0) # remove unneeded scales
-    pattern = np.concatenate((pattern,end_scale),axis=0)
-    pattern = np.delete(pattern, np.argwhere(pattern[:,0] >= melody_len) ,0)     # remove if end is 0 bars
-    return pattern
 
    
 def acceptance_melody(intvl, prob_intvl, pattern, start_note, a_range, notenr, rythem):
@@ -140,53 +113,10 @@ def plot_range(ranges,labels,title):
     plt.show()
     
     
-def meteo_melody(meteo, pattern, start_note, a_range, notenr, rythem,mpb):
-    melody = np.zeros(notenr, dtype=int)
-    cum_rythem = np.cumsum(rythem) *4             
-    cum_rythem = np.concatenate(([0],cum_rythem)) # add 0 at beginig 
     
-    scale_change = pattern[:,0]
-    scale_nr =0
-    scale = pattern[scale_nr,1]
-    melody[0] = scale[i_last_note(start_note,scale)]
     
-    for npn in range(1, notenr):  #npn: note per note (index)      
-        
-        scale_nr = np.ravel(np.argwhere(scale_change <= cum_rythem[npn-1])) [-1]     
-        scale = pattern[scale_nr,1]
-        
-        # find interval
-        met_resolution = 10
-        inter = np.asarray([cum_rythem[npn-1], cum_rythem[npn]])  # get beat_nr's 
-        inter = np.round((inter*mpb)/met_resolution).astype(int)  # calulate index of the data array
-        intvl = meteo[inter[1]] - meteo[inter[0]]                 # take the diffrence of the data
-        intvl = np.round(intvl).astype(int)                       # round to an int
-        
-        inote_befor = i_last_note(melody[npn-1],scale)    # get i in the scale of the last note
-        inote = inote_befor + intvl                       # calculate i in scale of note    
-        melody[npn] = scale[inote]                        # set in to melody
-         
-    plt.plot(cum_rythem[1:],melody) ; plt.xlabel= ('beat nr.'); plt.ylabel=('midi note nr')
-    return melody
-    
-      
 # [[[[[[[[[[[[[[[[[[[   -- Functions for Meteo Transformation --    ]]]]]]]]]]]]]]]]]]]
 
-
-#   takes the rolling mean and interpolates the meteo data for each colunm
-def met_transform(dM,factors,means,start):
-    col_nr = dM.shape[1]-2
-    start = int(start*6)
-    cut_border = np.trunc((np.amax(means))/2).astype(int)   # calculate nr of nan at the border because of the rolling mean
-    cut_begin = np.amax([cut_border,start])
-    trans = np.zeros((col_nr, (dM.shape[0]  -cut_border -cut_begin))) 
-    if col_nr != len(factors) or col_nr != len(means): print('dM,factor,mean not same length')
-    
-    for nr,factor, mean in zip(range(col_nr),factors,means):                                          
-        Yw  = np.array(dM[dM.columns[nr +2]].rolling(window=mean,center=True).mean()) # nr+2 the first two colums are location and date.
-        Yw = Yw * factor
-        trans[nr] = Yw[cut_begin: -cut_border]  # remove nan at begining and end. because of rolling mean   
-    return trans
 
 
 
