@@ -63,20 +63,6 @@ def acceptance(x, x_new):
     if np.random.uniform(0,1)< quot: return True
     else: return False
     
-def ran_duration(duration, prob_duration, melody_len):    
-    duration= np.asarray(duration)                  # this are the allowed durations of the notes
-    prob_duration = np.asarray(prob_duration)       # this are the probabilities how often each will occure
-    prob_duration = prob_duration/np.sum(prob_duration)
-    cumsum, melody_len, rythem = 0, melody_len/4 , np.asarray([])  #melody_len/4 as note values are quarter
-    while cumsum < melody_len:
-        note_len = np.random.choice(duration, p=prob_duration)
-        cumsum = cumsum + note_len
-        rythem = np.append(rythem,note_len)
-    return rythem , len(rythem)
-
-
-
-   
 def acceptance_melody(intvl, prob_intvl, pattern, start_note, a_range, notenr, rythem):
     melody = np.zeros(notenr, dtype=int)
     cum_rythem = np.cumsum(rythem) *4

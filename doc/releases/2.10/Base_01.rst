@@ -1,6 +1,6 @@
 
-2.10 Improving chord notation
-=============================
+2.10 Improving chord notation, End note
+=======================================
 
 .. code:: python3
 
@@ -92,10 +92,34 @@ Dictionary
         out_s = np.asarray(out_s)
         return out_s
 
+End note duration
+~~~~~~~~~~~~~~~~~
+
+It sounds better when the last note is played longer. With **end\_note**
+all note duration cand be set on a specific value. End not duration is
+not part of the melody\_len
+
+.. code:: python3
+
+    def ran_duration(duration, prob_duration, melody_len, end_dur):    
+        duration= np.asarray(duration)                  # this are the allowed durations of the notes
+        prob_duration = np.asarray(prob_duration)       # this are the probabilities how often each will occure
+        prob_duration = prob_duration/np.sum(prob_duration)
+        cumsum, melody_len, rythem = 0, melody_len/4 , np.asarray([])  #melody_len/4 as note values are quarter
+        while cumsum < melody_len:
+            note_len = np.random.choice(duration, p=prob_duration)
+            cumsum = cumsum + note_len
+            rythem = np.append(rythem,note_len)
+        if end_dur != 0:  
+            rythem = np.append(rythem,end_dur)
+        return rythem , len(rythem)
+
+
 tune\_2.10
 ----------
 
 -  Better understandable Chord notation
+-  longer end note duration
 -  Equal to tune\_2.09\_D
 
 -  Chords: Cm Cm7/Bb Eb Ab7 G7 \| C C/E F F#dim Ab7 G7 Cm
@@ -106,12 +130,12 @@ tune\_2.10
 
 .. code:: python3
 
-    def tune_209_D():
-        tune_name = 'tune_209_D'  
+    def tune_210_A():
+        tune_name = 'tune_210_A'  
         np.random.seed(144    )    #  79 33
         bar, bpb = 17, 4  # bar: Takt , bpb: beat per bar
         melody_len = bar * bpb
-        
+        end_dur = 1
         
      # | Cm Cm7/Bb Eb Ab7 G7 | C C/E F F#dim Ab7 G7 Cm |
         scales =[[1,'C',Cm],[1,'C',Cm7],[1,'Eb',C],[1,'Ab',C7],[1,'G',C7],[1,'C',C],[1,'C',C],[1,'F#',Cdim],[1,'Ab',C7],[1,'G',C7],[1,'C',Cm]] 
@@ -124,40 +148,40 @@ tune\_2.10
         
         # Solo voice
         range_1 = liniar_range(50,60,80,88)
-        rythem1, notenr_1 = ran_duration([1/16,1/8, 1/4,1/2], [2,5,3,0.5], melody_len)
+        rythem1, notenr_1 = ran_duration([1/16,1/8, 1/4,1/2], [2,5,3,0.5], melody_len,end_dur)
         melody1 = acceptance_melody([-2,-1, 0, 1, 2],[1, 3, 1, 3, 1],pattern, 70, range_1, notenr_1, rythem1)
         volumes1 = ran_volume([0,127], [1,4], notenr_1 )
         notes1 = NoteSeq( [Note(no,octave=0, dur=du, volume=vo) for no,du,vo in zip(melody1,rythem1,volumes1)] )
         
         # Bass1  Accustic
         range_2 = liniar_range(38,41,52,67)
-        rythem2, notenr_2 = ran_duration([1/8, 1/4,1/2], [4,4,1], melody_len)
+        rythem2, notenr_2 = ran_duration([1/8, 1/4,1/2], [4,4,1], melody_len,end_dur)
         melody2 = acceptance_melody([-2,-1, 0, 1, 2],[0, 3, 1, 3, 0],pattern, 50, range_2, notenr_2,rythem2)
         volumes2 = ran_volume([0,60], [0,8], notenr_2 )
         notes2 = NoteSeq( [Note(no,octave=0, dur=du, volume=vo) for no,du,vo in zip(melody2,rythem2,volumes2)] )
         
         # Bass2  Organ
         range_6 = liniar_range(30,38,50,62)
-        rythem6, notenr_6 = ran_duration([1/8, 1/4,1/2], [0,1,1], melody_len)
+        rythem6, notenr_6 = ran_duration([1/8, 1/4,1/2], [0,1,1], melody_len,end_dur)
         melody6 = acceptance_melody([-2,-1, 0, 1, 2],[1, 1, 1, 1, 1],bass1, 48, range_6, notenr_6,rythem6)
         volumes6 = ran_volume([0,110], [0,8], notenr_6 )
         notes6 = NoteSeq( [Note(no,octave=0, dur=du, volume=vo) for no,du,vo in zip(melody6,rythem6,volumes6)] )
         
         # Chord Voices
         range_3 = liniar_range(40,50,67,72)
-        rythem3, notenr_3 = ran_duration([1/8, 1/4,1/2], [1,2,1], melody_len)
+        rythem3, notenr_3 = ran_duration([1/8, 1/4,1/2], [1,2,1], melody_len,end_dur)
         melody3 = acceptance_melody([-2,-1, 0, 1, 2],[0, 3, 1, 3, 0],pattern, 65, range_3, notenr_3,rythem3)
         volumes3 = ran_volume([0,80], [0,8], notenr_3 )
         notes3 = NoteSeq( [Note(no,octave=0, dur=du, volume=vo) for no,du,vo in zip(melody3,rythem3,volumes3)] )
         
         range_4 = liniar_range(40,50,67,72)
-        rythem4, notenr_4 = ran_duration([1/8, 1/4,1/2], [1,2,1], melody_len)
+        rythem4, notenr_4 = ran_duration([1/8, 1/4,1/2], [1,2,1], melody_len,end_dur)
         melody4 = acceptance_melody([-2,-1, 0, 1, 2],[0, 3, 1, 3, 0],pattern, 60, range_4, notenr_4,rythem4)
         volumes4 = ran_volume([0,90], [0,8], notenr_4 )
         notes4 = NoteSeq( [Note(no,octave=0, dur=du, volume=vo) for no,du,vo in zip(melody4,rythem4,volumes4)] )
         
         range_5 = liniar_range(40,50,67,72)
-        rythem5, notenr_5 = ran_duration([1/8, 1/4,1/2], [1,2,1], melody_len)
+        rythem5, notenr_5 = ran_duration([1/8, 1/4,1/2], [1,2,1], melody_len,end_dur)
         melody5 = acceptance_melody([-2,-1, 0, 1, 2],[0, 3, 1, 3, 0],pattern, 54, range_5, notenr_5,rythem5)
         volumes5 = ran_volume([0,90], [0,8], notenr_5 )
         notes5= NoteSeq( [Note(no,octave=0, dur=du, volume=vo) for no,du,vo in zip(melody5,rythem5,volumes5)] )
@@ -187,7 +211,7 @@ https://jazz-soft.net/demo/GeneralMidi.html
     
     def gen_midi():
     #     squezze into a MIDI framework
-        notes, instruments, tune_name = tune_209_D() #  <--- select a tune  <<--     <<<<<<<<<--- select a tune -----
+        notes, instruments, tune_name = tune_210_A() #  <--- select a tune  <<--     <<<<<<<<<--- select a tune -----
         nTracks = len(notes)
         
         m = Midi(number_tracks=nTracks, tempo=120, instrument=instruments)
@@ -210,7 +234,7 @@ https://jazz-soft.net/demo/GeneralMidi.html
 
 
 
-.. image:: output_11_0.png
+.. image:: output_13_0.png
 
 
 External **Music\_Generation** library
