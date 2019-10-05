@@ -72,9 +72,9 @@ def ran_duration(duration, prob_duration, melody_len, end_dur):
         note_len = np.random.choice(duration, p=prob_duration)
         cumsum = cumsum + note_len
         rythem = np.append(rythem,note_len)
-    if end_dur != 0: rythem[-1] = end_dur
+    if end_dur != 0:  
+        rythem = np.append(rythem,end_dur)
     return rythem , len(rythem)
-
 
 def acceptance_melody(intvl, prob_intvl, pattern, start_note, a_range, notenr, rythem):
     melody = np.zeros(notenr, dtype=int)
