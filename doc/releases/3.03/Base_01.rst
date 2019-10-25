@@ -83,10 +83,13 @@ Transform Meteo data
     power= np.array([ 0, 7])
     B= np.array([ 0])
 
-**met\_transform** \* the **rolling mean** is to remove noise on the
-data. \* the **factors** are used to scale the melody, such that it
-plays in a certain range \* **start** defins the staring point of the
-melodies by removing the begin of the data
+**met\_transform**
+
+-  the **rolling mean** is to remove noise on the data.
+-  the **factors** are used to scale the melody, such that it plays in a
+   certain range
+-  **start** defins the staring point of the melodies by removing the
+   begin of the data
 
 Tune\_W
 -------
@@ -136,7 +139,7 @@ Tune\_W
     <br><audio controls="controls" src="https://raw.githubusercontent.com/schuhva/Music-Generation/master/doc/releases/3.03/tune_W.flac" type="audio/flac"></audio>
      tune_W
      
-     <br><img src="https://raw.githubusercontent.com/schuhva/Music-Generation/master/doc/releases/3.02/tune_W-1.png">
+     <br><img src="https://raw.githubusercontent.com/schuhva/Music-Generation/master/doc/releases/3.03/tune_W-1.png">
      tune_W  <br><br><br>
 
 Tune\_X
