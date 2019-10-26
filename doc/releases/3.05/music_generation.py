@@ -168,9 +168,11 @@ def acceptance_melody(intvl, prob_intvl, pattern, start_note, a_range, notenr, r
     return melody
 
 
-    
-    
-def meteo_melody(meteo, pattern, start_note, a_range, notenr, rythem,mpb):
+
+# [[[[[[[[[[[[[[[[[[[   -- Functions for Meteo Music --    ]]]]]]]]]]]]]]]]]]]
+
+
+def meteo_melody(meteo, pattern, start_note, notenr, rythem,mpb):
     melody = np.zeros(notenr, dtype=int)
     cum_rythem = np.cumsum(rythem) *4             
     cum_rythem = np.concatenate(([0],cum_rythem)) # add 0 at beginig 
@@ -199,6 +201,32 @@ def meteo_melody(meteo, pattern, start_note, a_range, notenr, rythem,mpb):
     plt.plot(cum_rythem[1:],melody) ; plt.xlabel= ('beat nr.'); plt.ylabel=('midi note nr')
     return melody
     
+    # Creates a regular drumm track by definig a rythmic, note and volume pattern
+def drum(rythems,notes,volumes,melody_len):
+    ryth_rep = int((melody_len/(np.sum(rythems)*4))+1)      # calculate repeat factor
+    rythem = np.tile(rythems,ryth_rep)                      # tile  
+    rythem = np.delete(rythem, np.argwhere(np.cumsum(rythem)*4 >= melody_len))  # delete not used notes
+    note_nr = len(rythem)
+    
+    melody_rep = int(note_nr/len(notes)+1)      # calculate repeat factor
+    melody = np.tile(notes,melody_rep)          # tile  
+    melody = melody[:note_nr]                   # delete not used notes
+    
+    volume_rep = int(note_nr/len(volumes)+1)    # calculate repeat factor
+    volume = np.tile(volumes,volume_rep)        # tile  
+    volume = volume[:note_nr]                   # delete not used notes
+    return melody, rythem, volume
+
+
+    #Generates out of meteo data a Volume track
+def met_vol(meteo, add, rythem, mpb):
+    met_resolution = 10 
+    cum_ryth = np.concatenate((np.asarray([0]),np.cumsum(rythem)))[:-1]   # add 0 at beginig remove last element
+    i_data = (cum_ryth * (mpb /met_resolution)).astype(int)               # calculate index of the data
+    volumes = meteo[i_data].astype(int)                 # fill in meteo data
+    volumes = volumes + add                             # add 
+    volumes = np.minimum(volumes, 127)                  # set values bigger than 127 to 127
+    return volumes
       
 # [[[[[[[[[[[[[[[[[[[   -- Functions for Meteo Transformation --    ]]]]]]]]]]]]]]]]]]]
 
@@ -218,7 +246,19 @@ def met_transform(dM,factors,means,start):
         trans[nr] = Yw[cut_begin: -cut_border]  # remove nan at begining and end. because of rolling mean   
     return trans
 
-
+    # Prints the end and starting point of the actual tune; Calculates melody_len and Start
+def print_dur(bar,bpb,mpb,s_day,s_hour,tune_name):
+    start = (s_day*24)+ s_hour  # start in hours 
+    melody_len = bar * bpb
+    
+    S_h = start%24
+    S_d = start//24
+    dur_h = melody_len *mpb/60
+    E_h = (start+dur_h)%24
+    E_d = (start+dur_h)//24
+    print(tune_name+': Start:',S_d,'day',S_h,'h   End:', E_d,'day',E_h,'h')
+    return melody_len, start
+    
 
 # [[[[[[[[[[[[[[[[[[[   -- Functions for Sound generation --    ]]]]]]]]]]]]]]]]]]]
 
