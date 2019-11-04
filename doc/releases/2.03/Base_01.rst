@@ -2,10 +2,11 @@
 2.03 Melody by Intervals
 ========================
 
-In the Previous exampel the melody was completly random and did not
-sound like a melody for us. In composed music the melody often only
-makes small steps of seconds or thirds. Note Duration and rests are set
-by controlled random.
+In the previous example the melody was completely random and did not
+sound like a melody for us. In composed music, the melody often only
+makes small steps of seconds or thirds. So in this Version the melody is
+created by intervals. Note duration and rests are set by controlled
+random.
 
 .. code:: python3
 
@@ -14,7 +15,7 @@ by controlled random.
     import numpy as np
 
 **Instruments:** Available are at lest the 128 General-Midi (GM)
-Instruments. Depending on the sound-fonts there is a bigger choise. A
+Instruments. Depending on the sound-fonts there is a bigger choice. A
 list of the GM instruments can be found here.
 https://jazz-soft.net/demo/GeneralMidi.html
 
@@ -46,9 +47,12 @@ https://jazz-soft.net/demo/GeneralMidi.html
         return volumes
 
 **tune\_L:** In this example we are not going to create the melody
-directly. Instead we controll **the interval of the next note** of the
+directly. Instead we control **the interval of the next note** of the
 melody. Starting with a second and a third up and downwards and the
 Perfect unison. The note durations are quarters for the moment.
+
+The size of each interval is created by controlled random. Every
+interval has an individual probability.
 
 .. code:: python3
 
@@ -84,7 +88,7 @@ Perfect unison. The note durations are quarters for the moment.
      tune_L  <br><br><br>
 
 **tune\_M:** Same as tune\_L but with two voices and creating the
-**int\_vlt funktion**
+**int\_vlt function**
 
 .. code:: python3
 
@@ -106,11 +110,11 @@ Perfect unison. The note durations are quarters for the moment.
         
         melody1 = scale[ i_tone_zero + intvl_melody([-2,-1, 0, 1, 2],[2, 4, 1, 4, 2], melody_len)]
         rythem1 = ran_duration([1/8, 1/4,1/2], [1,2,1], melody_len)
-        volumes1 = ran_volume([0,110], [0,4], melody_len )
+        volumes1 = ran_volume([0,120], [0,4], melody_len )
         
         melody2 = scale[ i_tone_zero + intvl_melody([-2,-1, 0, 1, 2],[2, 4, 1, 4, 2], melody_len)]
         rythem2 = ran_duration([1/8, 1/4,1/2], [1,2,1], melody_len)
-        volumes2 = ran_volume([0,120], [0,4], melody_len )
+        volumes2 = ran_volume([0,100], [0,4], melody_len )
     
         notes1 = NoteSeq( [Note(no,octave=6, dur=du, volume=vo) for no,du,vo in zip(melody1,rythem1,volumes1)] )
         notes2 = NoteSeq( [Note(no,octave=5, dur=du, volume=vo) for no,du,vo in zip(melody2,rythem2,volumes2)] )
@@ -146,8 +150,8 @@ Perfect unison. The note durations are quarters for the moment.
 Midi: Play and Generate audio-file
 ----------------------------------
 
-Externel players offered a better sound quality in comparison with
-python liaberys. We use **VLC** and **Musescore**
+External players offered a better sound quality in comparison with
+python libraries. We use **VLC** and **Musescore**
 
 .. code:: python3
 
@@ -179,5 +183,3 @@ python liaberys. We use **VLC** and **Musescore**
     midi_play(midi_file_name)
     midi_audio(midi_file_name)
     midi_png(midi_file_name)
-
-

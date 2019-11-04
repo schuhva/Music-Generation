@@ -2,9 +2,9 @@
 2.04 Scale and Chord Generation
 ===============================
 
-To Creat a **scale** or **chord** it is now possibel to just define the
+To create a **scale** or **chord** it is now possible to just define the
 notes in one octave. The scale is then generated over the hole midi
-range.
+range. Only the notes defined in the scale can be played by the melody.
 
 .. code:: python3
 
@@ -13,11 +13,11 @@ range.
     import numpy as np
 
 **Instruments:** Available are at lest the 128 General-Midi (GM)
-Instruments. Depending on the sound-fonts there is a bigger choise. A
+Instruments. Depending on the sound-fonts there is a bigger choice. A
 list of the GM instruments can be found here.
 https://jazz-soft.net/demo/GeneralMidi.html
 
-**scale\_create:** Creats a scale over the hole midi Range from C-2 to
+**scale\_create:** Creates a scale over the hole midi Range from C-2 to
 C-7 (midi notes: 0-120). Input is the scale or a chord of one octave.
 
 .. code:: python3
@@ -67,7 +67,7 @@ C-7 (midi notes: 0-120). Input is the scale or a chord of one octave.
         imelody = np.cumsum(intervals)
         return imelody
 
-**tune\_O:** Changing the scale creating methode.
+**tune\_O:** Changing the scale creating method.
 
 .. code:: python3
 
@@ -126,10 +126,10 @@ C-7 (midi notes: 0-120). Input is the scale or a chord of one octave.
 Midi: Play and Generate audio-file
 ----------------------------------
 
-Externel players offered a better sound quality in comparison with
-python liaberys. We use **VLC** and **Musescore**. The **soundfont** for
-the VLC player is defined over the command line. For Musescore through
-the Gui in the preferences.
+External players offered a better sound quality in comparison with
+python libraries. We use **VLC** and **Musescore**. The **soundfont**
+for the VLC player is defined over the command line. For Musescore
+through the Gui in the preferences.
 
 .. code:: python3
 
@@ -161,4 +161,3 @@ the Gui in the preferences.
     midi_play(midi_file_name)
     midi_audio(midi_file_name)
     midi_png(midi_file_name)
-

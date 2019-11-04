@@ -1,27 +1,31 @@
 
-2.05 Stay in Instument Range
-============================
+2.05 Stay in Instrument Range
+=============================
 
-In the Previous exampel the melody could get **off track** and get
-further away from the **good sounding instument range.** It was also
-possile that it left the scale and created an error.
+In the Previous example the melody could get **off track** and get
+further away from the **good sounding instrument range.** It was also
+possible that it left the scale and created an error.
 
-The Melody generation has new concept. The **intervals are now genereted
+The Melody generation has new concept. The **intervals are now generated
 step by step (intvl\_next**) with an for-loop. Each interval is first
 added to the melody and then checked for acceptance.
 
-The **range provids the aceptance values** over the seven Midi-Octaves.
-At the monent a liniar range is used, but it could be easily be changeed
-in a Beta-Curve.
+The **range provides the acceptance values** over the seven
+Midi-Octaves. At the moment a linear range is used, but it could be
+easily be changed in a Beta-Curve.
 
-The **aceptance funktion** decides wheter the **proposed interval is
-acepted** or if an new proposal must be made. 1) first the acceptance
-values of the current and proposed note are read out of the range. 2)
-then the aceptance value of the curent note is divided by the aceptance
-value ofe the puposed note. 3) This quotient is compared with an random
-number from 0 to 1. If Quotient > Random nuber Proposed interval is
-accepted. Otherwise an new propositon is requested. This is an
-**Metropolis-Hasting Algorythem**.
+The **acceptance function** decides whether the **proposed interval is
+accepted** or if an new proposal must be made.
+
+1. first the acceptance values of the current and proposed note are read
+   out of the range.
+2. then the acceptance value of the current note is divided by the
+   acceptance value of the proposed note.
+3. This quotient is compared with an random number from 0 to 1. If
+   Quotient > Random number, the proposed interval is accepted.
+   Otherwise an new proposition is requested.
+
+This is an **Metropolis-Hasting Algorithm**.
 
 .. code:: python3
 
@@ -30,10 +34,8 @@ accepted. Otherwise an new propositon is requested. This is an
     import numpy as np
     import matplotlib.pyplot as plt
 
-
-
 **Instruments:** Available are at lest the 128 General-Midi (GM)
-Instruments. Depending on the sound-fonts there is a bigger choise. A
+Instruments. Depending on the sound-fonts there is a bigger choice. A
 list of the GM instruments can be found here.
 https://jazz-soft.net/demo/GeneralMidi.html
 
@@ -83,8 +85,8 @@ https://jazz-soft.net/demo/GeneralMidi.html
         imelody = np.cumsum(intervals)
         return imelody
 
-**liniar\_range:** Generates the aceptance values. They define the range
-in which the instrument can play.
+**linear\_range:** Generates the acceptance values. They define the
+range in which the instrument can play.
 
 .. code:: python3
 
@@ -102,7 +104,8 @@ in which the instrument can play.
         return a_range
         
 
-**i\_last\_note:** finds de i value of the last not in the actual scale.
+**i\_last\_note:** finds the i value of the last note in the actual
+scale.
 
 .. code:: python3
 
@@ -111,7 +114,7 @@ in which the instrument can play.
         return i_note
 
 **intvl\_next** is a modification of intvl\_melody. But it does only
-creats **one** interval and not an array/melody in one time.
+creates **one** interval and not an array/melody in one time.
 
 .. code:: python3
 
@@ -122,8 +125,8 @@ creats **one** interval and not an array/melody in one time.
         interval = np.random.choice(intvl, size=1, p=prob_intvl)
         return interval[0]
 
-**aceptance** decides with an Metropolis-Hasting Algorythem wheter the
-Proposed not is acepted.
+**acceptance** decides with an Metropolis-Hasting Algorithm whether the
+Proposed not is accepted.
 
 .. code:: python3
 
@@ -150,8 +153,8 @@ Proposed not is acepted.
             accept = False    
             while not accept:       # aslong acept == False
                 inote = i_last_note(melody[npn-1],scale)
-                inote_next = inote + intvl_next(intvl, prob_intvl)
-                accept_val = a_range[[melody[(npn-1)],scale[inote_next]]]
+                inote_next = inote + intvl_next(intvl, prob_intvl)         # add current not with Proposition
+                accept_val = a_range[[melody[(npn-1)],scale[inote_next]]]  # get acceptance values
                 accept = acceptance(accept_val[0],accept_val[1])
             melody[npn] = scale[inote_next]
         print('melody:',melody)
@@ -159,7 +162,7 @@ Proposed not is acepted.
                 
             
 
-**tune\_P:** Changing the scale creating methode.
+**tune\_P:** Changing the scale creating method.
 
 .. code:: python3
 
@@ -208,10 +211,10 @@ Proposed not is acepted.
 Midi: Play and Generate audio-file
 ----------------------------------
 
-Externel players offered a better sound quality in comparison with
-python liaberys. We use **VLC** and **Musescore**. The **soundfont** for
-the VLC player is defined over the command line. For Musescore through
-the Gui in the preferences.
+External players offered a better sound quality in comparison with
+python libraries. We use **VLC** and **Musescore**. The **soundfont**
+for the VLC player is defined over the command line. For Musescore
+through the Gui in the preferences.
 
 .. code:: python3
 
@@ -246,7 +249,7 @@ the Gui in the preferences.
 
 
 
-.. image:: output_20_0.png
+.. image:: output_19_0.png
 
 
 .. parsed-literal::
