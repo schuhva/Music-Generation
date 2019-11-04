@@ -1,11 +1,11 @@
 
-3.04 Improving Drumm
-====================
+3.04 Improving Drum
+===================
 
--  Split met\_percussion in diffrent Functoins and improved them. So
-   they can also be uesed diffrently.
--  Creat Print start end, Drum and meteo Volume functions.
--  Weather Period from 1.8.2019 to 28.8.2019
+-  Split met\_percussion in different functions and improved them. So
+   they can also be used differently.
+-  Create print start end\_, drum and meteorological volume functions.
+-  Weather period from 1.8.2019 to 28.8.2019
 
 .. code:: python3
 
@@ -18,8 +18,8 @@
     import matplotlib.ticker as plticker
     from datetime import date
 
-Read Meteo data
-~~~~~~~~~~~~~~~
+Read Meteorological Data
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code:: python3
 
@@ -84,12 +84,11 @@ Chords and scales
 Drum
 ~~~~
 
--  together with **on\_off** and **met\_vol** it repleaces
-   **met\_percus** of the previos version
--  Creates a regular drumm track by definig a rythmic, note and volume
-   pattern
--  the volumes will be corrected by the on\_off function
--  the volume can be overwritten be the **met\_vol** function
+-  Together with **on\_off** and **met\_vol** it replaces
+   **met\_percus** of the previous version.
+-  Creates a regular drum track by defining a rhythmic, note and volume
+   pattern.
+-  the volume can be overwritten be the **met\_vol** function.
 
 .. code:: python3
 
@@ -110,13 +109,13 @@ Drum
         return melody, rythem, volume
        
 
-Meteo Volume
-~~~~~~~~~~~~
+Meteorological Volume
+~~~~~~~~~~~~~~~~~~~~~
 
--  Generates out of meteo data a Volume track
--  uses the Rytehm to calculate the position in the meteo data
--  volumes can be in or decreased by a value (add)
--  maximum value is 127 as this is the maximum MIDI-Volume
+-  Generates out of meteorological data a Volume track.
+-  Uses the rhythm to calculate the position in the meteorological data.
+-  Volumes can be in or decreased by a value (add).
+-  Maximum value is 127 as this is the maximum MIDI-Volume.
 
 .. code:: python3
 
@@ -132,7 +131,7 @@ Meteo Volume
 Print Start and End
 ~~~~~~~~~~~~~~~~~~~
 
--  Prints the end and starting point of the actual tune
+-  Prints the end and starting point of the actual tune.
 -  Calculates melody\_len and Start
 
 .. code:: python3
@@ -154,9 +153,9 @@ Print Start and End
 tune 304\_A
 -----------
 
--  this tune is similar to the previous one. but the Function used where
-   changed and improved
--  period from 5.8 to 7.8.2019
+-  This tune is similar to the previous one. but the function used where
+   changed and improved.
+-  Period from 5.8 to 7.8.2019
 
 .. code:: python3
 
@@ -207,7 +206,7 @@ tune 304\_A
      tune_304_A  <br><br><br>
 
 **Instruments:** Available are at lest the 128 General-Midi (GM)
-Instruments. Depending on the sound-fonts there is a bigger choise. A
+Instruments. Depending on the sound-fonts there is a bigger choice. A
 list of the GM instruments can be found here.
 https://jazz-soft.net/demo/GeneralMidi.html
 
@@ -254,7 +253,7 @@ External **Music\_Generation** library
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This library changes from version to version. New or changed code is
-first explaind above. This is a copy of music\_generation.py
+first explained above. This is a copy of music\_generation.py
 
 .. literalinclude:: music_generation.py
    :language: python

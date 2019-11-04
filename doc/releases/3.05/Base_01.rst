@@ -2,12 +2,12 @@
 3.05 Melody On Off
 ==================
 
--  Dependent on Meteo Data a voice is set on or off
--  This is handy for a meteo parameter like global radiation. At night
-   there is no Global Radiation and therefore it is zero. To prevent
-   that the same tone is repeated over and over again the voice can be
-   paused.
--  Weather Period from 1.8.2019 to 28.8.2019
+-  Dependent on meteorological data a voice is set on or off.
+-  This is handy for a meteorological parameter like global radiation.
+   At night there is no global radiation and therefore it is zero. To
+   prevent that the same tone is repeated over and over again the voice
+   can be paused.
+-  Weather period from the 1.8.2019 to 28.8.2019
 
 .. code:: python3
 
@@ -20,8 +20,8 @@
     import matplotlib.ticker as plticker
     from datetime import date
 
-Read Meteo data
-~~~~~~~~~~~~~~~
+Read Meteorological Data
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code:: python3
 
@@ -86,10 +86,10 @@ Chords and scales
 on\_off
 ~~~~~~~
 
--  Mutes and unmutes voices dependet of the meteo input data
--  With on\_range defines when a voice plays
--  on\_off is applied after the met\_transform. so the on\_range must be
-   adjusted accordingly
+-  Mutes and unmutes voices dependent of the meteorological input data.
+-  With on\_range defines when a voice plays.
+-  on\_off is applied after the met\_transform. So the on\_range must be
+   adjusted accordingly.
 
 .. code:: python3
 
@@ -107,11 +107,11 @@ on\_off
 tune 305\_A
 -----------
 
--  period from 11.8 to 15.8.2019
--  Temperature and pressure played by Pianos
--  timpani regulated by the Rain
--  A Music box playes the melody of the global radiation during. During
-   night the melody is paused
+-  Period from the 11.8 to 15.8.2019.
+-  Temperature and pressure played by pianos.
+-  Timpani regulated by the rain.
+-  A Music box plays the melody of the global radiation. During night
+   the melody is paused.
 
 .. code:: python3
 
@@ -167,7 +167,7 @@ tune 305\_A
      tune_305_A  <br><br><br>
 
 **Instruments:** Available are at lest the 128 General-Midi (GM)
-Instruments. Depending on the sound-fonts there is a bigger choise. A
+Instruments. Depending on the sound-fonts there is a bigger choice. A
 list of the GM instruments can be found here.
 https://jazz-soft.net/demo/GeneralMidi.html
 
@@ -214,8 +214,7 @@ External **Music\_Generation** library
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This library changes from version to version. New or changed code is
-first explaind above. This is a copy of music\_generation.py
+first explained above. This is a copy of music\_generation.py
 
 .. literalinclude:: music_generation.py
    :language: python
-

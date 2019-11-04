@@ -1,11 +1,11 @@
 
-3.06 Meteo Harmony Change
-=========================
+3.06 Meteorological Harmony Change
+==================================
 
--  with the introducion of **harm\_change** the harmony pattern can be
-   changed by the meteo data. The two pattern are still defined by hand,
-   but when the pattern are switched is contolled by the weather
-   messurements. The pattern are only changed once.
+-  With the introduction of **harm\_change** the harmony pattern can be
+   changed by the meteorological data. The two pattern are still defined
+   by hand, but when the pattern are switched, is controlled by the
+   weather measurements. The pattern are only changed once.
 -  Weather Period from 1.8.2019 to 28.8.2019
 
 .. code:: python3
@@ -19,8 +19,8 @@
     import matplotlib.ticker as plticker
     from datetime import date
 
-Read Meteo data
-~~~~~~~~~~~~~~~
+Read Meteorological Data
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code:: python3
 
@@ -82,16 +82,16 @@ Chords and scales
     minor = np.array([ 0, 2, 3, 5, 7, 8, 10])
     blues = np.array([ 0, 3, 5, 6, 7, 10])
 
-Harm\_Change
-~~~~~~~~~~~~
+Harmony Change
+~~~~~~~~~~~~~~
 
-The **Harm\_Change** function replaces the **pattern\_gen** fuction.
-Harm\_Change calls the pattern\_gen funktion for creating the Pattern.
-It assembels two pattern dependent on meteo data input. When the data
-reaches a manually defind value the first time, the pattern is changed.
-The Pattern changes only once. The end scale functionalities are still
-in use. When a harmony change by meteo data is not desired, the
-pattern\_gen function is also avaliable for further use.
+The **Harm\_Change** function replaces the **pattern\_gen** function.
+Harm\_Change calls the pattern\_gen function for creating the pattern.
+It assembles two pattern dependent on meteorological data input. When
+the data reaches a manually defined value the first time, the pattern is
+changed. The Pattern changes only once. The end scale functionalities
+are still in use. When a harmony change by meteorological data is not
+desired, the pattern\_gen function is also available for further use.
 
 .. code:: python3
 
@@ -115,11 +115,11 @@ tune 306\_A
 -----------
 
 -  period from 11.8 to 15.8.2019
--  Temperature and pressure played by Pianos
--  Timpani volume is regulated by the rain
--  A Music box plays the melody of the global radiation. During night
+-  Temperature and pressure played by pianos.
+-  Timpani volume is regulated by the rain.
+-  A music box plays the melody of the global radiation. During night
    the melody is paused.
--  The numbers of flashes chages the chord pattern. When the first time
+-  The numbers of flashes changes the chord pattern. The first time when
    15 flashes per ten minutes are reached the scale is switched from
    major to minor. It would be possible to change a harmony pattern and
    not only two scales.
@@ -180,7 +180,7 @@ tune 306\_A
      tune_306_A  <br><br><br>
 
 **Instruments:** Available are at lest the 128 General-Midi (GM)
-Instruments. Depending on the sound-fonts there is a bigger choise. A
+Instruments. Depending on the sound-fonts there is a bigger choice. A
 list of the GM instruments can be found here.
 https://jazz-soft.net/demo/GeneralMidi.html
 
@@ -227,8 +227,7 @@ External **Music\_Generation** library
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This library changes from version to version. New or changed code is
-first explaind above. This is a copy of music\_generation.py
+first explained above. This is a copy of music\_generation.py
 
 .. literalinclude:: music_generation.py
    :language: python
-

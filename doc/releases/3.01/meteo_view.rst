@@ -1,5 +1,5 @@
 
-3.01.1 Display Meteorological data
+3.01.1 Display Meteorological Data
 ==================================
 
 Station: Kloten/Zürich Flughafen

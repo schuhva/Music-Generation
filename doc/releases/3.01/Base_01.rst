@@ -1,5 +1,5 @@
 
-3.02 First meteorological data
+3.02 First Meteorological Data
 ==============================
 
 -  Starting with just implementing one voice. The meteorological data is
@@ -20,7 +20,7 @@
     import matplotlib.ticker as plticker
     from datetime import date
 
-Transform meteorological data
+Transform Meteorological Data
 -----------------------------
 
 .. code:: python3

@@ -2,9 +2,9 @@
 3.03 Chord pattern and Timpani
 ==============================
 
--  using Chord pattern like in the versions 2.08 and 2.09
--  adding a easy Drumm funktion contr the volume.
--  The Range and the acceptance funktions are not in use.
+-  Using Chord pattern like in the versions 2.08 and 2.09
+-  Adding a easy drum function controlled by the volume.
+-  The range and the acceptance functions are not in use.
 
 .. code:: python3
 
@@ -17,8 +17,8 @@
     import matplotlib.ticker as plticker
     from datetime import date
 
-Transform Meteo data
---------------------
+Transform Meteorological data
+-----------------------------
 
 .. code:: python3
 
@@ -88,14 +88,14 @@ Transform Meteo data
 -  the **rolling mean** is to remove noise on the data.
 -  the **factors** are used to scale the melody, such that it plays in a
    certain range
--  **start** defins the staring point of the melodies by removing the
+-  **start** defines the staring point of the melodies by removing the
    begin of the data
 
 Tune\_W
 -------
 
 -  This tune uses the temperature and humidity
--  With Bassoon and Clarinet
+-  With bassoon and clarinet
 -  Chord pattern Cm Ab Fm Ddim G7 Cm Fm G7
 
 .. code:: python3
@@ -146,20 +146,21 @@ Tune\_X
 -------
 
 -  Major-scale
--  it is the rain of the 8.09.2019. See 3.03.1 Display Meteo-Data
--  Air-pressure and Temperature as melody.
--  Air-pressure and Temperature are during this rain seqenc relatively
-   constant. so the melody does often play the same note
--  The volume of the Timpany is controlled by the amount of rain. The
-   data is magnified by a large factor. the peacks are then cut of.
-   Otherwise the drumm would only be heard for a short moment.
+-  it is the rain of the 8.09.2019. See 3.03.1 Display meteorological
+   data
+-  Air-pressure and temperature as melody.
+-  Air-pressure and temperature are during this rain sequence relatively
+   constant. So the melody does often play the same note
+-  The volume of the timpani is controlled by the amount of rain. The
+   data is magnified by a large factor. The peaks are then cut of.
+   Otherwise the drum would only be heard for a short moment.
 
 Met\_percus
 ~~~~~~~~~~~
 
--  met\_percus is an funktion to create an easy drumm
--  the played note can be a singel note or an list of several notes
-   which is reapeted
+-  met\_percus is an function to create an easy drum
+-  the played note can be a single note or an list of several notes
+   which is repeated
 
 .. code:: python3
 
@@ -226,14 +227,14 @@ Met\_percus
 
 .. raw:: html
 
-    <br><audio controls="controls" src="https://raw.githubusercontent.com/schuhva/Music-Generation/master/doc/releases/3.03/tune_X.flac" type="audio/flac"></audio>
+    <br><audio controls="controls" src="https://raw.githubusercontent.com/schuhva/Music-Generation/master/doc/releases/3.03/tune_U.flac" type="audio/flac"></audio>
      tune_X
      
      <br><img src="https://raw.githubusercontent.com/schuhva/Music-Generation/master/doc/releases/3.03/tune_X-1.png">
      tune_X  <br><br><br>
 
 **Instruments:** Available are at lest the 128 General-Midi (GM)
-Instruments. Depending on the sound-fonts there is a bigger choise. A
+Instruments. Depending on the sound-fonts there is a bigger choice. A
 list of the GM instruments can be found here.
 https://jazz-soft.net/demo/GeneralMidi.html
 
@@ -277,7 +278,7 @@ External **Music\_Generation** library
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This library changes from version to version. New or changed code is
-first explaind above. This is a copy of music\_generation.py
+first explained above. This is a copy of music\_generation.py
 
 .. literalinclude:: music_generation.py
    :language: python

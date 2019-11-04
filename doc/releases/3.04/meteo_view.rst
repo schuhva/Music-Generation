@@ -1,8 +1,8 @@
 
-3.04.1 Display Meteo-Data
-=========================
+3.04.1 Display Meteorological Data
+==================================
 
-1.08.2019 to 28.08.2019
+From the 1.08.2019 to 28.08.2019
 
 Station: Kloten/Zürich Flughafen
 
@@ -33,8 +33,8 @@ Legende:
     
     def scale(a):    return (a-a.min())/(a.max()-a.min())
 
-Read Meteo-Data
----------------
+Read Meteorological Data
+------------------------
 
 .. code:: python3
 
@@ -193,8 +193,4 @@ Plot data
     9 visibi
     10 V_wind
     11 direction_wind
-
-
-
-
 
