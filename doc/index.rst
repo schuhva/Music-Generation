@@ -6,12 +6,7 @@
 Welcome to Music-Generation's documentation!
 ============================================
 
-.. toctree::
-   :maxdepth: 1
-   :caption: Contents:
 
-   journal
-   
 
 .. toctree::
    :maxdepth: 1
@@ -21,11 +16,24 @@ Welcome to Music-Generation's documentation!
    
    releases/*/*
    
+   
+   
 
 Github
-======
+------
 https://github.com/schuhva/Music-Generation
 
+Paper in German
+---------------
+
+Link einfügen
+
+
+.. toctree::
+   :maxdepth: 1
+
+   journal
+   
 
 
 Indices and tables
