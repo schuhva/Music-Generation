@@ -1,9 +1,9 @@
 
-2.07 syncronize voices
-======================
+2.07 synchronize voices
+=======================
 
-Till now the voices had to have the same number of notes to stop at the
-same time. That means the probability of note lengths had to be the
+Till now the voices needed to have the same number of notes to stop at
+the same time. That means the probability of note lengths had to be the
 same. The problem with the chord pattern was that the voices could shift
 and both played in a different chord.
 
@@ -19,7 +19,7 @@ also independent of the piece length.
     import matplotlib.pyplot as plt
 
 **Instruments:** Available are at lest the 128 General-Midi (GM)
-Instruments. Depending on the sound-fonts there is a bigger choise. A
+Instruments. Depending on the sound-fonts there is a bigger choice. A
 list of the GM instruments can be found here.
 https://jazz-soft.net/demo/GeneralMidi.html
 
@@ -104,8 +104,8 @@ https://jazz-soft.net/demo/GeneralMidi.html
         if np.random.uniform(0,1)< quot: return True
         else: return False
 
-**ran\_duration** was modified such that the rythem has the length of
-melody\_len (nummbers of beats)
+**ran\_duration** was modified such that the rhythm has the length of
+melody\_len (numbers of beats)
 
 .. code:: python3
 
@@ -120,7 +120,7 @@ melody\_len (nummbers of beats)
             rythem = np.append(rythem,note_len)
         return rythem , len(rythem)
 
-**pattern\_gen** takes the chord pattern (scales): it reapeats the
+**pattern\_gen** takes the chord pattern (scales): it repeats the
 pattern as long the melody is, and generates the beat number where the
 chords change.
 
@@ -141,8 +141,8 @@ chords change.
         
         return pattern
 
-**acceptance\_melody** is trans formed such that it can read an process
-the pattern varibel to a melody
+**acceptance\_melody** is transformed such that it can read an process
+the (chord) pattern variable to a melody.
 
 .. code:: python3
 
@@ -185,9 +185,10 @@ the pattern varibel to a melody
         plt.legend()
         plt.show()
 
-**tune\_S:** The voices are now syncronized. 1. A diffrent note length
-distribution is now possibel. 2. The chord change takes place at the
-same time in both voices.
+**tune\_S:** The voices are now synchronized.
+
+1. A different note length distribution is now possible.
+2. The chord change takes place at the same time in both voices.
 
 .. code:: python3
 
@@ -246,10 +247,10 @@ same time in both voices.
 Midi: Play and Generate audio-file
 ----------------------------------
 
-Externel players offered a better sound quality in comparison with
-python liaberys. We use **VLC** and **Musescore**. The **soundfont** for
-the VLC player is defined over the command line. For Musescore through
-the Gui in the preferences.
+External players offered a better sound quality in comparison with
+python libraries. We use **VLC** and **Musescore**. The **soundfont**
+for the VLC player is defined over the command line. For Musescore
+through the Gui in the preferences.
 
 .. code:: python3
 
@@ -285,8 +286,4 @@ the Gui in the preferences.
 
 
 .. image:: output_19_0.png
-
-
-
-
 

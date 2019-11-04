@@ -2,7 +2,10 @@
 2.06 Chord Change
 =================
 
-Now a chord model can be defind manualy. The Chord pattern is reapeted.
+Now a chord model can be defined manually instead of one single scale.
+The Chord pattern is repeated. The chords change after six notes.
+
+The chord changes gets improved in the version 2.07 2.08 and 2.10
 
 .. code:: python3
 
@@ -11,10 +14,8 @@ Now a chord model can be defind manualy. The Chord pattern is reapeted.
     import numpy as np
     import matplotlib.pyplot as plt
 
-
-
 **Instruments:** Available are at lest the 128 General-Midi (GM)
-Instruments. Depending on the sound-fonts there is a bigger choise. A
+Instruments. Depending on the sound-fonts there is a bigger choice. A
 list of the GM instruments can be found here.
 https://jazz-soft.net/demo/GeneralMidi.html
 
@@ -67,7 +68,7 @@ https://jazz-soft.net/demo/GeneralMidi.html
         imelody = np.cumsum(intervals)
         return imelody
 
-**liniar\_range:** Generates an range in which the instrument can play.
+**linear\_range:** Generates an range in which the instrument can play.
 
 .. code:: python3
 
@@ -85,7 +86,8 @@ https://jazz-soft.net/demo/GeneralMidi.html
         return a_range
         
 
-**i\_last\_note:** finds de i value of the last not in the actual scale.
+**i\_last\_note:** finds the i value of the last note in the actual
+scale.
 
 .. code:: python3
 
@@ -94,7 +96,7 @@ https://jazz-soft.net/demo/GeneralMidi.html
         return i_note
 
 **intvl\_next** is a modification of intvl\_melody. But it does only
-creats **one** interval and not an array/melody in one time.
+creates **one** interval and not an array/melody in one time.
 
 .. code:: python3
 
@@ -148,7 +150,7 @@ creats **one** interval and not an array/melody in one time.
                 
             
 
-**tune\_Q:** \|I\|VI\|II\|V\| sceme
+**tune\_Q:** \|I\|VI\|II\|V\| scheme
 
 .. code:: python3
 
@@ -179,10 +181,10 @@ creats **one** interval and not an array/melody in one time.
      <br><img src="https://raw.githubusercontent.com/schuhva/Music-Generation/master/doc/releases/2.06/tune_Q-1.png">
      tune_Q  <br><br><br>
 
-**tune\_R:** Blues sceme with two voices.
+**tune\_R:** Blues scheme with two voices.
 
-As the melody creating is independet for each voice chord changes is not
-simutanesly. need to be corrected.
+As the melody creating is independent for each voice, the chord changes
+is not simultaneously. This needs to be corrected.
 
 .. code:: python3
 
@@ -241,10 +243,10 @@ simutanesly. need to be corrected.
 Midi: Play and Generate audio-file
 ----------------------------------
 
-Externel players offered a better sound quality in comparison with
-python liaberys. We use **VLC** and **Musescore**. The **soundfont** for
-the VLC player is defined over the command line. For Musescore through
-the Gui in the preferences.
+External players offered a better sound quality in comparison with
+python libraries. We use **VLC** and **Musescore**. The **soundfont**
+for the VLC player is defined over the command line. For Musescore
+through the Gui in the preferences.
 
 .. code:: python3
 
@@ -279,11 +281,9 @@ the Gui in the preferences.
 
 
 
-.. image:: output_22_0.png
+.. image:: output_21_0.png
 
 
 
-.. image:: output_22_1.png
-
-
+.. image:: output_21_1.png
 

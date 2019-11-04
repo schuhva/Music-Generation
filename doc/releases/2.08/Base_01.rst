@@ -2,7 +2,7 @@
 2.08 Ending
 ===========
 
-A spesific chord pattern can be added at the end of the "song"
+A specific chord pattern can be added at the end of the "song"
 
 .. code:: python3
 
@@ -12,7 +12,7 @@ A spesific chord pattern can be added at the end of the "song"
     import matplotlib.pyplot as plt
 
 **Instruments:** Available are at lest the 128 General-Midi (GM)
-Instruments. Depending on the sound-fonts there is a bigger choise. A
+Instruments. Depending on the sound-fonts there is a bigger choice. A
 list of the GM instruments can be found here.
 https://jazz-soft.net/demo/GeneralMidi.html
 
@@ -178,10 +178,13 @@ https://jazz-soft.net/demo/GeneralMidi.html
         pattern = np.delete(pattern, np.argwhere(pattern[:,0] >= melody_len) ,0)     # remove if end is 0 bars
         return pattern
 
-**tune\_V:** \ 
-* A Ending Chord change is defined. It replaces the normal pattern at the end. \
-* the first voice has a diffrent pattern. It plays on the Blues scale. 
-* Three Piano voices play in a range of an octave and generete together the chords of the extended Blues scheme
+**tune\_V:**
+
+-  A Ending Chord change is defined. It replaces the normal pattern at
+   the end.
+-  the first voice has a different pattern. It plays on the Blues scale.
+-  Three Piano voices play in a range of an octave and generate together
+   the chords of the extended Blues scheme
 
 .. code:: python3
 
@@ -269,10 +272,10 @@ https://jazz-soft.net/demo/GeneralMidi.html
 Midi: Play and Generate audio-file
 ----------------------------------
 
-Externel players offered a better sound quality in comparison with
-python liaberys. We use **VLC** and **Musescore**. The **soundfont** for
-the VLC player is defined over the command line. For Musescore through
-the Gui in the preferences.
+External players offered a better sound quality in comparison with
+python libraries. We use **VLC** and **Musescore**. The **soundfont**
+for the VLC player is defined over the command line. For Musescore
+through the Gui in the preferences.
 
 .. code:: python3
 
@@ -308,8 +311,4 @@ the Gui in the preferences.
 
 
 .. image:: output_13_0.png
-
-
-
-
 
