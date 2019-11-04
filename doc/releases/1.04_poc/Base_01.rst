@@ -2,8 +2,8 @@
 1.04 Start and Basics
 =====================
 
-Pyknon offers to generate easely to generet midi files, rather to modify
-the directly and manually with noteOn and noteOff commands.
+Pyknon offers to easily generate midi files, rather to modify the
+MIDI-file directly and manually with noteOn and noteOff commands.
 
 .. code:: python3
 
@@ -14,12 +14,12 @@ the directly and manually with noteOn and noteOff commands.
 Pyknon
 ------
 
-There exist two diffrent notations one with the **Note()** function and
-a simpyfied **plain text** version
+There exist two different notations one with the **Note()** function and
+a simplified **plain text** version
 
 Note(value , octave , dur , volume)
 
--  value: integer, note hight in semitones, 0 = middel C = midi 60
+-  value: integer, note hight in semitones, 0 = middle C = midi 60
 -  octave: octave number
 -  dur: duration, 0.25 = quarter note
 -  volume: from 1 to 127
@@ -70,11 +70,11 @@ Note(value , octave , dur , volume)
 
 
 
-Midi: Play and Generate audio-file
+MIDI: Play and Generate audio-file
 ----------------------------------
 
-Externel players offered a better sound quality in comparison with
-python liaberys. We uses **VLC** and **Musescore**.
+External players offered a better sound quality in comparison with
+python libraries. We use **VLC** and **Musescore**.
 
 .. code:: python3
 
@@ -114,3 +114,4 @@ python liaberys. We uses **VLC** and **Musescore**.
     <br><img alt="self-Logo" src="https://raw.githubusercontent.com/schuhva/Music-Generation/master/doc/releases/1.04_poc/tune_C-1.png">
     <br>tune_C
  
+
