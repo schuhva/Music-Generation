@@ -1,13 +1,13 @@
 
-1.06 Rythem, Volumes and Ornaments
+1.06 Rhythm, Volumes and Ornaments
 ==================================
 
 Integrating the **dur** and **volume** arguments of the **Note()**
-funktion.
+function.
 
-Adding **Ornaments** to the melody. The same Onaments appers each or
-many notes. When a Melodic paatern is used several times on a diffrent
-hight it's called a Sequence.
+Adding **Ornaments** to the melody. The same Ornament appears on each
+note. When a Melodic pattern is used several times on a different hight,
+it's called a Sequence.
 
 .. code:: python3
 
@@ -18,21 +18,21 @@ hight it's called a Sequence.
 Pyknon
 ------
 
-There exist two diffrent notations one with the **Note()** function and
-in a simpyfied **plain text** version
+There exist two different notations one with the **Note()** function and
+in a simplified **plain text** version
 
 **Note(value , octave , dur , volume)**
 
--  value: integer, note hight in semitones, 0 = middel C = midi 60
+-  value: integer, note hight in semitones, 0 = middle C = midi 60
 -  octave: octave number
 -  dur: duration, 0.25 = quarter note
 -  volume: from 1 to 127
 
 **Instruments:** Available are at lest the 128 General-Midi (GM)
-Instruments. Depending on the sound-fonts there is a bigger choise. A
+Instruments. Depending on the sound-fonts there is a bigger choice. A
 list of the GM instruments can be found here.
 https://en.wikipedia.org/wiki/General\_MIDI#Program\_change\_events
-Remeber to substract 1, as the list starts with 1 and not 0.
+Remember to subtract 1, as the list starts with 1 and not 0.
 
 .. code:: python3
 
@@ -63,10 +63,10 @@ Remeber to substract 1, as the list starts with 1 and not 0.
 
 **tune\_G**
 
--  Not anymore using the scale direclty. First creating an Index-Tune
-   whitch is then convertet in to the tune with the notes.
--  adding an Ornament on each note of the scale. (Seqeuncing)
--  Using a rythmic-pattern instead of just quarter-notes.
+-  Not anymore using the scale directly. First creating an Index-Tune
+   which is then converted with a scale in to the tune with the notes.
+-  adding an Ornament on each note of the scale. (Sequencing)
+-  Using a rhythmic-pattern instead of just quarter-notes.
 
 .. code:: python3
 
@@ -111,8 +111,8 @@ Remeber to substract 1, as the list starts with 1 and not 0.
 Midi: Play and Generate audio-file
 ----------------------------------
 
-Externel players offered a better sound quality in comparison with
-python liaberys. We use **VLC** and **Musescore**
+External players offered a better sound quality in comparison with
+python libraries. We use **VLC** and **Musescore**
 
 .. code:: python3
 
@@ -150,11 +150,14 @@ python liaberys. We use **VLC** and **Musescore**
     <br><audio controls="controls" src="https://raw.githubusercontent.com/schuhva/Music-Generation/master/doc/releases/1.06/tune_F.flac" type="audio/flac"></audio>
      tune_F
      
+     <br><img alt="self-Logo" src="https://raw.githubusercontent.com/schuhva/Music-Generation/master/doc/releases/1.06/tune_F-1.png">
+     tune_F
+     
     <br><audio controls="controls" src="https://raw.githubusercontent.com/schuhva/Music-Generation/master/doc/releases/1.06/tune_G.flac" type="audio/flac"></audio>
      tune_G
      
     <br><img alt="self-Logo" src="https://raw.githubusercontent.com/schuhva/Music-Generation/master/doc/releases/1.06/tune_G-1.png">
-     tune_G (the saxaphone is a transposing instrument)
+     tune_G (the saxophone is a transposing instrument)
      
      Unfortunately I couldn't print it as 6/8 time signature, as it should be.
      

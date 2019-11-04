@@ -1,10 +1,10 @@
 
-2.01 Controlled Random: Rests and Rythem
+2.01 Controlled Random: Rests and Rhythm
 ========================================
 
-Now we introduce randeomness, starting with Rests and Rythems. But we
-controll it by giving a selection of possibilities and we are definig
-how often each choise is selected.
+Now we introduce random, starting with rests and rhythms. The random is
+controlled, by giving a selection of possibilities. The user defines how
+often each choice is selected.
 
 .. code:: python3
 
@@ -13,10 +13,10 @@ how often each choise is selected.
     import numpy as np
 
 **Instruments:** Available are at lest the 128 General-Midi (GM)
-Instruments. Depending on the sound-fonts there is a bigger choise. A
+Instruments. Depending on the sound-fonts there is a bigger choice. A
 list of the GM instruments can be found here.
 https://en.wikipedia.org/wiki/General\_MIDI#Program\_change\_events
-Remeber to substract 1, as the list starts with 1 and not 0.
+Remember to subtract 1, as the list starts with 1 and not 0.
 
 .. code:: python3
 
@@ -100,7 +100,7 @@ zero.
         
         
         notes1 = NoteSeq( [Note(no+12, octave=5, dur=du, volume=vo) for no,du,vo in zip(melody,rythem,volumes)] )
-        instruments = [73]
+        instruments = [68]
         notes = [notes1]
         return notes, instruments,tune_name
 
@@ -112,8 +112,8 @@ zero.
      <br><img src="https://raw.githubusercontent.com/schuhva/Music-Generation/master/doc/releases/2.01/tune_I-1.png">
      tune_I   <br><br><br>
 
-**tune\_J:** Creating two tracks with the same melody but diffrent Rests
-and Rythem
+**tune\_J:** Creating two tracks with the same melody but different
+Rests and Rhythm
 
 .. code:: python3
 
@@ -215,5 +215,6 @@ python liaberys. We use **VLC** and **Musescore**
     midi_file_name = gen_midi()
     
     midi_play(midi_file_name)
-    midi_audio(midi_file_name)
-    midi_png(midi_file_name)
+    #midi_audio(midi_file_name)
+    #midi_png(midi_file_name)
+

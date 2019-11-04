@@ -2,7 +2,7 @@
 2.02 Random Melody
 ==================
 
-The Melody plays completly random in a range bit more than two octaves.
+The Melody plays completely random in a range bit more than two octaves.
 Note duration and rests are set by controlled random.
 
 .. code:: python3
@@ -12,10 +12,10 @@ Note duration and rests are set by controlled random.
     import numpy as np
 
 **Instruments:** Available are at lest the 128 General-Midi (GM)
-Instruments. Depending on the sound-fonts there is a bigger choise. A
+Instruments. Depending on the sound-fonts there is a bigger choice. A
 list of the GM instruments can be found here.
 https://en.wikipedia.org/wiki/General\_MIDI#Program\_change\_events
-Remeber to substract 1, as the list starts with 1 and not 0.
+Remember to subtract 1, as the list starts with 1 and not 0.
 
 .. code:: python3
 
@@ -44,8 +44,8 @@ Remeber to substract 1, as the list starts with 1 and not 0.
         volumes = np.r_[np.random.choice(volume, size=melody_len, p=prob_volume)]
         return volumes
 
-**tune\_K:** Creating a track with complet random melody and controlled
-random rythem
+**tune\_K:** Creating a track with complete random melody and controlled
+random rhythm
 
 .. code:: python3
 
@@ -98,8 +98,8 @@ random rythem
 Midi: Play and Generate audio-file
 ----------------------------------
 
-Externel players offered a better sound quality in comparison with
-python liaberys. We use **VLC** and **Musescore**
+External players offered a better sound quality in comparison with
+python libraries. We use **VLC** and **Musescore**
 
 .. code:: python3
 
@@ -131,4 +131,3 @@ python liaberys. We use **VLC** and **Musescore**
     midi_play(midi_file_name)
     midi_audio(midi_file_name)
     midi_png(midi_file_name)
-
