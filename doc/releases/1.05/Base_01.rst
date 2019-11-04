@@ -14,21 +14,21 @@ that the number of tracks does not mater.
 Pyknon
 ------
 
-There exist two diffrent notations one with the **Note()** function and
-in a simpyfied **plain text** version
+There exist two different notations one with the **Note()** function and
+in a simplified **plain text** version
 
 **Note(value , octave , dur , volume)**
 
--  value: integer, note hight in semitones, 0 = middel C = midi 60
+-  value: integer, note hight in semitones, 0 = middle C = midi 60
 -  octave: octave number
 -  dur: duration, 0.25 = quarter note
 -  volume: from 1 to 127
 
 **Instruments:** Available are at least the 128 General-Midi (GM)
-Instruments. Depending on the sound-fonts there is a bigger choise. A
+Instruments. Depending on the sound-fonts there is a bigger choice. A
 list of the GM instruments can be found here.
 https://en.wikipedia.org/wiki/General\_MIDI#Program\_change\_events
-Remeber to substract 1 as the list starts with 1 and not 0.
+Remember to subtract 1 as the list starts with 1 and not 0.
 
 .. code:: python3
 
