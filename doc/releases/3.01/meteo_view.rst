@@ -1,6 +1,6 @@
 
-3.01.1 Display Meteo-Data
-=========================
+3.01.1 Display Meteorological data
+==================================
 
 Station: Kloten/Zürich Flughafen
 
@@ -27,8 +27,8 @@ Legende:
     
     def scale(a):    return (a-a.min())/(a.max()-a.min())
 
-Read Meteo-Data
----------------
+Read Meteorological data
+------------------------
 
 .. code:: python3
 
@@ -159,3 +159,4 @@ Plot data
     5 Precip
     6 H_rel
     7 V_wind
+

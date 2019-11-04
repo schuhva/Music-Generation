@@ -2,9 +2,9 @@
 3.02 Sync voices
 ================
 
--  The voices are now syncronized
+-  The voices are now synchronized
 -  Each voice has an own rolling mean window and scale factor
--  Functions which ar no longer part of this development step are
+-  Functions which are no longer part of this development step are
    **exported to the music\_generation.py file.** The file is found at
    the **end** of the page.
 
@@ -56,10 +56,13 @@ Transform Meteo data
     NT, MP 2016 8
 
 
-**met\_transform** \* the **rolling mean** is to remove noise on the
-data. \* the **factors** are used to scale the melody, such that it
-plays in a certain range \* **start** defins the staring point of the
-melodies by removing the begin of the data
+**met\_transform**
+
+-  the **rolling mean** is to remove noise on the data.
+-  the **factors** are used to scale the melody, such that it plays in a
+   certain range
+-  **start** defines the staring point of the melodies by removing the
+   begin of the data
 
 .. code:: python3
 
@@ -177,7 +180,7 @@ This tune uses the wind and temperature data, starting after 80 hours
      tune_T  <br><br><br>
 
 **Instruments:** Available are at lest the 128 General-Midi (GM)
-Instruments. Depending on the sound-fonts there is a bigger choise. A
+Instruments. Depending on the sound-fonts there is a bigger choice. A
 list of the GM instruments can be found here.
 https://jazz-soft.net/demo/GeneralMidi.html
 
@@ -220,7 +223,7 @@ External **Music\_Generation** library
 --------------------------------------
 
 This library changes from version to version. New or changed code is
-first explaind above. This is a copy of music\_generation.py
+first explained above. This is a copy of music\_generation.py
 
 .. literalinclude:: music_generation.py
    :language: python

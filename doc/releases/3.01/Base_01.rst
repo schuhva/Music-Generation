@@ -1,10 +1,11 @@
 
-3.01.2 First meteo data
-=======================
+3.02 First meteorological data
+==============================
 
--  Starting with just implement one voice. The meteo data is first
-   transformed befor the diffrence os taken and so creat the intervals.
--  Functions which ar no longer part of this development step are
+-  Starting with just implementing one voice. The meteorological data is
+   first transformed before the differences are taken and so created the
+   intervals.
+-  Functions which are no longer part of this development step are
    **exported to the music\_generation.py file.** The file is found at
    the **end** of the page.
 
@@ -19,8 +20,8 @@
     import matplotlib.ticker as plticker
     from datetime import date
 
-Transform Meteo data
---------------------
+Transform meteorological data
+-----------------------------
 
 .. code:: python3
 
@@ -58,14 +59,14 @@ Transform Meteo data
     NT, MP 2016 8
 
 
-meteo data has **noise.** Also are the value diffrence in the 10 min
-mesurement interval not that big.
+meteorological data has **noise.** Also are the value difference in the
+10 min measurement interval not that big.
 
 **w defines the sampling rate**. But k also defines the size of the
-moving avrage. With this method evry value is used once.
+moving average. With this method every value is used once.
 
-As we want intervals, the diffrence is taken. But the intervals are
-first multipyed with a factor to have a suitebal range of intervals.
+As we want intervals, the difference is taken. But the intervals are
+first multiplied with a factor to have a suitable range of intervals.
 
 .. code:: python3
 
@@ -124,7 +125,7 @@ first multipyed with a factor to have a suitebal range of intervals.
 Tune T
 ------
 
-The intervals of the meteo-date are set in scale and played
+The intervals of the meteorological data are scaled and played
 
 .. code:: python3
 
@@ -183,7 +184,7 @@ The intervals of the meteo-date are set in scale and played
      tune_T  <br><br><br>
 
 **Instruments:** Available are at lest the 128 General-Midi (GM)
-Instruments. Depending on the sound-fonts there is a bigger choise. A
+Instruments. Depending on the sound-fonts there is a bigger choice. A
 list of the GM instruments can be found here.
 https://jazz-soft.net/demo/GeneralMidi.html
 
@@ -221,8 +222,7 @@ External **Music\_Generation** library
 --------------------------------------
 
 This library changes from version to version. New or changed code is
-first explaind above. This is a copy of music\_generation.py
+first explained above. This is a copy of music\_generation.py
 
 .. literalinclude:: music_generation.py
    :language: python
-
