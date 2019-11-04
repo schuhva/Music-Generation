@@ -41,11 +41,11 @@ Chord definitions
 tune\_212
 ---------
 
-For this tune I use the chord sequence of a Jazz Standart. **Georgia on
+For this tune I use the chord sequence of a Jazz Standard. **Georgia on
 my mind**
 
 -  Two E-Piano play only eight while the third also plays sixteenth.
--  An Organ has a seperate Bass line with quarters
+-  An Organ has a separate Bass line with quarters
 -  The Clarinet has the solo voice
 
 .. code:: python3
@@ -139,7 +139,7 @@ my mind**
      tune_212_A <br><br><br>
 
 **Instruments:** Available are at lest the 128 General-Midi (GM)
-Instruments. Depending on the sound-fonts there is a bigger choise. A
+Instruments. Depending on the sound-fonts there is a bigger choice. A
 list of the GM instruments can be found here.
 https://jazz-soft.net/demo/GeneralMidi.html
 
@@ -178,7 +178,7 @@ External **Music\_Generation** library
 --------------------------------------
 
 This library changes from version to version. New or changed code is
-first explaind above. This is a copy of music\_generation.py
+first explained above. This is a copy of music\_generation.py
 
 .. literalinclude:: music_generation.py
    :language: python

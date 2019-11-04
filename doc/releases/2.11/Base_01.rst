@@ -1,8 +1,8 @@
 
-2.11 J. S. Bach C-Dur Preludium
-===============================
+2.11 J. S. Bach C-Dur Prelude
+=============================
 
-In this Example I'm using the Chord of the C-Dur Prludium, BWV 846
+In this Example I'm using the Chord of the C-Dur Prelude, BWV 846
 
 .. code:: python3
 
@@ -43,11 +43,11 @@ Chord definitions
 tune\_211\_A
 ------------
 
-For this tune I use the chord sequence of a famous classical pice. **J.
-S. Bach C-Dur Preludium, Wohltemperirtes Klavier, BWV 846**
+For this tune I use the chord sequence of a famous classical piece. **J.
+S. Bach C-Dur Prelude, Wohltemperirtes Klavier, BWV 846**
 
 -  Three Strings playing chords
--  an accustic bass
+-  an acoustic bass
 -  Organ for the second base
 -  A Flute as solo voice
 
@@ -127,7 +127,7 @@ S. Bach C-Dur Preludium, Wohltemperirtes Klavier, BWV 846**
      tune_211_A <br><br><br>
 
 **Instruments:** Available are at lest the 128 General-Midi (GM)
-Instruments. Depending on the sound-fonts there is a bigger choise. A
+Instruments. Depending on the sound-fonts there is a bigger choice. A
 list of the GM instruments can be found here.
 https://jazz-soft.net/demo/GeneralMidi.html
 
@@ -166,7 +166,7 @@ External **Music\_Generation** library
 --------------------------------------
 
 This library changes from version to version. New or changed code is
-first explaind above. This is a copy of music\_generation.py
+first explained above. This is a copy of music\_generation.py
 
 .. literalinclude:: music_generation.py
    :language: python

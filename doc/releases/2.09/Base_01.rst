@@ -2,9 +2,9 @@
 2.09 Some Examples
 ==================
 
-Four Exampels with diffrent manually defined chord patterns.
+Four Examples with different manually defined chord patterns.
 
-Functions which ar no longer part of this development step are
+Functions which are no longer part of this development step are
 **exported to the music\_generation.py file.** The file is found at the
 **end** of the page.
 
@@ -207,14 +207,14 @@ tune\_2.09\_C
         range_1 = liniar_range(49,67,80,84)
         rythem1, notenr_1 = ran_duration([1/16,1/8, 1/4,1/2], [1,3,2,0], melody_len)
         melody1 = acceptance_melody([-3,-2,-1, 0, 1, 2, 3],[2,2, 2, 1, 2, 2,2],pattern2, 67, range_1, notenr_1, rythem1)
-        volumes1 = ran_volume([0,70], [1,6], notenr_1 )
+        volumes1 = ran_volume([0,80], [1,6], notenr_1 )
         notes1 = NoteSeq( [Note(no,octave=0, dur=du, volume=vo) for no,du,vo in zip(melody1,rythem1,volumes1)] )
         
         # Bass voice
         range_2 = liniar_range(32,40,52,63)
         rythem2, notenr_2 = ran_duration([1/8, 1/4,1/2], [0,2,0], melody_len)
         melody2 = acceptance_melody([-2,-1, 0, 1, 2],[0, 3, 1, 3, 0],pattern, 44, range_2, notenr_2,rythem2)
-        volumes2 = ran_volume([0,80], [0,8], notenr_2 )
+        volumes2 = ran_volume([0,100], [0,8], notenr_2 )
         notes2 = NoteSeq( [Note(no,octave=0, dur=du, volume=vo) for no,du,vo in zip(melody2,rythem2,volumes2)] )
         
         # Chord Voices
@@ -232,7 +232,7 @@ tune\_2.09\_C
         
         
         plot_range([range_1,range_2,range_3],['range_1','range_2','range_3'],tune_name)
-        instruments = [56,17,0,0]
+        instruments = [56,20,0,0]
         notes = [notes1,notes2,notes3,notes4]
         return notes, instruments,tune_name
 
@@ -250,8 +250,8 @@ tune\_2.09\_D
 
 -  Chords: Cm Cm7/Bb Eb Ab7 G7 \| C C/E F F#dim Ab7 G7 Cm
 -  Three guitars playing chords
--  an accustic bass
--  Organ for the base with seprat bass pattern. Mostly the root note.
+-  an acoustic bass
+-  Organ for the base with separate bass pattern. Mostly the root note.
 -  Vibraphone as solo voice
 
 .. code:: python3
@@ -339,7 +339,7 @@ tune\_2.09\_D
      tune_209_D <br><br><br>
 
 **Instruments:** Available are at lest the 128 General-Midi (GM)
-Instruments. Depending on the sound-fonts there is a bigger choise. A
+Instruments. Depending on the sound-fonts there is a bigger choice. A
 list of the GM instruments can be found here.
 https://jazz-soft.net/demo/GeneralMidi.html
 
@@ -348,7 +348,7 @@ https://jazz-soft.net/demo/GeneralMidi.html
     
     def gen_midi():
     #     squezze into a MIDI framework
-        notes, instruments, tune_name = tune_209_B() #  <--- select a tune  <<--     <<<<<<<<<--- select a tune -----
+        notes, instruments, tune_name = tune_209_C() #  <--- select a tune  <<--     <<<<<<<<<--- select a tune -----
         nTracks = len(notes)
         
         m = Midi(number_tracks=nTracks, tempo=120, instrument=instruments)
@@ -365,7 +365,7 @@ https://jazz-soft.net/demo/GeneralMidi.html
     ######---  Main  ---######
     midi_file_name = gen_midi()
     
-    midi_play(midi_file_name)
+    #midi_play(midi_file_name)
     midi_audio(midi_file_name)
     midi_png(midi_file_name)
 
@@ -378,7 +378,7 @@ External **Music\_Generation** library
 --------------------------------------
 
 This library changes from version to version. New or changed code is
-first explaind above. This is a copy of music\_generation.py
+first explained above. This is a copy of music\_generation.py
 
 .. literalinclude:: music_generation.py
    :language: python

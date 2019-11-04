@@ -2,6 +2,9 @@
 2.10 Improving chord notation, End note
 =======================================
 
+-  The root note of an chord can now be written as Letter like F or Ab
+-  The length of the last note can be defined.
+
 .. code:: python3
 
     from pyknon.genmidi import Midi
@@ -45,6 +48,9 @@
 
 Dictionary
 ----------
+
+The dictionary in the note\_to\_chord function transforms note names in
+midi numbers.
 
 .. code:: python3
 
@@ -96,7 +102,7 @@ End note duration
 ~~~~~~~~~~~~~~~~~
 
 It sounds better when the last note is played longer. With **end\_note**
-all note duration cand be set on a specific value. End not duration is
+all note duration can be set on a specific value. End not duration is
 not part of the melody\_len
 
 .. code:: python3
@@ -124,8 +130,8 @@ tune\_2.10
 
 -  Chords: Cm Cm7/Bb Eb Ab7 G7 \| C C/E F F#dim Ab7 G7 Cm
 -  Three guitars playing chords
--  an accustic bass
--  Organ for the base with seprat bass pattern. Mostly the root note.
+-  an acoustic bass
+-  Organ for the base with separate bass pattern. Mostly the root note.
 -  Vibraphone as solo voice
 
 .. code:: python3
@@ -195,14 +201,14 @@ tune\_2.10
 
 .. raw:: html
 
-    <br><audio controls="controls" src="https://raw.githubusercontent.com/schuhva/Music-Generation/master/doc/releases/2.10/tune_209_A.flac" type="audio/flac"></audio>
-     tune__209_A
+    <br><audio controls="controls" src="https://raw.githubusercontent.com/schuhva/Music-Generation/master/doc/releases/2.10/tune_210_A.flac" type="audio/flac"></audio>
+     tune__210_A
      
-     <br><img src="https://raw.githubusercontent.com/schuhva/Music-Generation/master/doc/releases/2.10/tune_209_A-1.png">
-     tune_209_A <br><br><br>
+     <br><img src="https://raw.githubusercontent.com/schuhva/Music-Generation/master/doc/releases/2.10/tune_209_D-1.png">
+     tune_210_A <br><br><br>
 
 **Instruments:** Available are at lest the 128 General-Midi (GM)
-Instruments. Depending on the sound-fonts there is a bigger choise. A
+Instruments. Depending on the sound-fonts there is a bigger choice. A
 list of the GM instruments can be found here.
 https://jazz-soft.net/demo/GeneralMidi.html
 
@@ -241,7 +247,7 @@ External **Music\_Generation** library
 --------------------------------------
 
 This library changes from version to version. New or changed code is
-first explaind above. This is a copy of music\_generation.py
+first explained above. This is a copy of music\_generation.py
 
 .. literalinclude:: music_generation.py
    :language: python
