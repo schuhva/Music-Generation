@@ -115,7 +115,8 @@ tune 306\_A
 -----------
 
 -  period from 11.8 to 15.8.2019
--  Temperature and pressure played by pianos.
+-  Temperature and pressure played is played by Heckelphone and
+   Clarinet.
 -  Timpani volume is regulated by the rain.
 -  A music box plays the melody of the global radiation. During night
    the melody is paused.
