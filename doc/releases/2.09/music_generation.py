@@ -134,9 +134,11 @@ def plot_range(ranges,labels,title):
     plt.title(title)
 
     for a_range, lab in zip(ranges,labels):
-        ax.plot(range(121), a_range,label= lab )
-    ax.vlines(x=np.linspace(0,108, num=10), ymin=0, ymax=10, color='grey', label='Octaves',linewidth=1) # plot octaves
+        ax.plot(range(121), a_range,label= lab, lw=4 )
+        ax.fill_between(range(121), a_range, alpha= 0.15)
+    ax.vlines(x=np.linspace(0,108, num=10), ymin=-5, ymax=5, color='grey', label='Octaves',linewidth=1.5) # plot octaves
     plt.legend()
+    plt.savefig("range.svg")
     plt.show()
     
     
