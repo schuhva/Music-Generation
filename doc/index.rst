@@ -37,7 +37,9 @@ https://github.com/schuhva/Music-Generation/blob/master/Poster.pdf
 
 .. toctree::
    :maxdepth: 1
-
+   
+   examples
+   audio
    journal
    
 
