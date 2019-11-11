@@ -23,10 +23,16 @@ Github
 ------
 https://github.com/schuhva/Music-Generation
 
-Paper in German
+Schriftliche Arbeit
 ---------------
 
-Link einfügen
+https://github.com/schuhva/Music-Generation/raw/master/Schriftliche_Arbeit.pdf
+
+Poster
+-------
+
+
+https://github.com/schuhva/Music-Generation/blob/master/Poster.pdf
 
 
 .. toctree::
