@@ -24,7 +24,7 @@ Github
 https://github.com/schuhva/Music-Generation
 
 Schriftliche Arbeit
----------------
+--------------------
 
 https://github.com/schuhva/Music-Generation/raw/master/Schriftliche_Arbeit.pdf
 
@@ -32,11 +32,12 @@ Poster
 -------
 
 
-https://github.com/schuhva/Music-Generation/blob/master/Poster.pdf
+https://github.com/schuhva/Music-Generation/raw/master/Poster.pdf
 
 
 .. toctree::
    :maxdepth: 1
+   :caption: Weiteres:
    
    examples
    audio
