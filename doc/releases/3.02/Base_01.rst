@@ -177,7 +177,14 @@ This tune uses the wind and temperature data, starting after 80 hours
      tune_U
      
      <br><img src="https://raw.githubusercontent.com/schuhva/Music-Generation/master/doc/releases/3.02/tune_U-1.png">
-     tune_T  <br><br><br>
+     tune_U  <br><br><br>
+     
+
+    <br><audio controls="controls" src="https://raw.githubusercontent.com/schuhva/Music-Generation/master/doc/releases/3.02/tune_U_2.flac" type="audio/flac"></audio>
+     tune_U_2
+     
+     <br><img src="https://raw.githubusercontent.com/schuhva/Music-Generation/master/doc/releases/3.02/tune_U_2-1.png">
+     tune_U_2  <br><br><br>
 
 **Instruments:** Available are at lest the 128 General-Midi (GM)
 Instruments. Depending on the sound-fonts there is a bigger choice. A
