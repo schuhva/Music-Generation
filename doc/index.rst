@@ -34,14 +34,24 @@ Poster
 
 https://github.com/schuhva/Music-Generation/raw/master/Poster.pdf
 
+Additional
+..........
+
 
 .. toctree::
    :maxdepth: 1
-   :caption: Weiteres:
    
-   examples
-   audio
+   audio/online
    journal
+
+Only local: (for presentation)
+
+.. toctree::
+   :maxdepth: 1
+   
+   audio/local
+   audio
+   
    
 
 

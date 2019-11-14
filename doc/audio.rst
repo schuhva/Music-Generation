@@ -11,4 +11,4 @@ Dies ist nur die Seite für den QR-Code
 
 .. raw:: html
 
-    <meta http-equiv="Refresh" content="0; url=https://music-generation.readthedocs.io/en/latest/examples.html" />
+    <meta http-equiv="Refresh" content="0; url=https://music-generation.readthedocs.io/en/latest/audio/online.html" />
