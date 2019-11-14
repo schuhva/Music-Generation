@@ -2,11 +2,11 @@
 Audio Beispiele
 ===============
 
-Die Liste ist eine Auswahl an Beispielen aus der 1. und 2. Phase.
+Die Liste bildet eine Auswahl an Beispielen aus der 1. und 2. Phase.
 
-Für Beispiele mit Meteodaten (2. Phase) runter scrollen.
+Für Beispiele mit Meteodaten (2. Phase) bitte runter scrollen.
 
-Dokumentation des Projecktes ist unter
+Dokumentation des Projektes ist unter
 https://music-generation.readthedocs.io zu finden.
 
 1. Phase: Musik mittels gesteurtem Zufall
@@ -15,9 +15,9 @@ https://music-generation.readthedocs.io zu finden.
 Zufällige Melodie
 ^^^^^^^^^^^^^^^^^
 
--  Melodie komplett Zufällig
+-  Melodie komplett zufällig
 -  C-Moll Skala
--  Rhythmus mit gesteurtem Zufall
+-  Rhythmus mit gesteurtem Zufall erzeugt
 
 .. raw:: html
 
@@ -27,8 +27,8 @@ Zufällige Melodie
 Akkordfolge
 ^^^^^^^^^^^
 
--  Melodie Interwalle mit gesteurtem Zufall gesteuert.
--  Rhythmus mit gesteurtem Zufall
+-  Intervalle der Melodie mit gesteurtem Zufall generiert.
+-  Rhythmus mit gesteurtem Zufall erzeugt.
 -  Akkordfolge: \| I \| VI \| II \| V \|
 
 .. raw:: html
@@ -39,11 +39,11 @@ Akkordfolge
 Blues
 ^^^^^
 
--  Melodie Interwalle mit gesteurtem Zufall gesteuert.
--  Rhythmus mit gesteurtem Zufall
+-  Melodie Intervalle mit gesteurtem Zufall generiert.
+-  Rhythmus mit gesteurtem Zufall erzeugt.
 -  Akkordfolge: Blues-Schema
--  Bleitginstrumente spielen nur Akkordtöne
--  Saxafon spielt die Blues-Skala
+-  Begleitginstrumente spielen nur Akkordtöne
+-  Saxofon spielt die Blues-Skala
 
 .. raw:: html
 
@@ -53,7 +53,7 @@ Blues
 Streichquartett
 ^^^^^^^^^^^^^^^
 
--  Interwalle und Rythmus mit gesteurtem Zufall gesteuert.
+-  Intervalle und Rythmus mit gesteurtem Zufall generiert.
 -  Violine, Bratsche, Cello, Kontrabass
 -  Instrumente spielen nur Akkordtöne
 
@@ -65,7 +65,7 @@ Streichquartett
 Jazz Vibraphon
 ^^^^^^^^^^^^^^
 
--  Interwalle und Rythmus mit gesteurtem Zufall gesteuert.
+-  Intervalle und Rythmus mit gesteurtem Zufall generiert.
 -  Vibraphon, 3 Gitarren, Orgel
 -  Instrumente spielen nur Akkordtöne
 
@@ -77,9 +77,9 @@ Jazz Vibraphon
 J.S. Bach C-Dur Präludium, BWV 846
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
--  Es wurden die Akkorde des Präludium für diese Interpretation
+-  Für diese Interpretation wurden die Akkorde des C-Dur Präludium
    verwendet.
--  Interwalle und Rythmus mit gesteurtem Zufall gesteuert.
+-  Intervalle und Rythmus mit gesteurtem Zufall generiert.
 -  Klarinette, Kontrabass, 3 Violinen, Orgel
 -  Instrumente spielen nur Akkordtöne
 
@@ -91,9 +91,9 @@ J.S. Bach C-Dur Präludium, BWV 846
 Georgia on My Mind
 ^^^^^^^^^^^^^^^^^^
 
--  Es wurden die Akkorde von Georgia on My Mind für diese Interpretation
+-  Für diese Interpretation wurden die Akkorde von Georgia on My Mind
    verwendet.
--  Interwalle und Rythmus mit gesteurtem Zufall gesteuert.
+-  Intervalle und Rythmus mit gesteurtem Zufall generiert.
 -  Klarinette, Kontrabass, 3 Violinen, Orgel
 -  Instrumente spielen nur Akkordtöne
 
@@ -103,21 +103,21 @@ Georgia on My Mind
     <audio controls="controls" src="https://raw.githubusercontent.com/schuhva/Music-Generation/master/doc/releases/2.12/tune_212_A.flac" type="audio/flac"></audio><br><br><br><br>
 
 
-2. Phase: Musik-Struckturen mit Meteodaten zusammenführen
-=========================================================
+2. Phase: Musik-Strukturen mit Meteodaten zusammenführen
+========================================================
 
 Wind-Glocken
 ^^^^^^^^^^^^
 
--  Wetterdaten: 31.8.2019 um ca. acht Uhr, Dauer zwei Tage und acht
+-  Wetterdaten: 31.8.2019 um ca. acht Uhr, dauer zwei Tage und acht
    Stunden
 -  Melodie wird durch Meteodaten generiert:
 
    -  Glocken: Windgeschwindikeit
    -  Violine: Temperatur
 
--  Es werden nur C-Moll-Töne gespielt
--  Rhythmus mit gesteurtem Zufall
+-  Es werden nur C-Moll-Töne gespielt.
+-  Rhythmus mit gesteurtem Zufall erzeugt.
 
 Beispiel 1
 
@@ -135,15 +135,15 @@ Beipiel 2
 Akordfolge mit Meteodaten
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
--  Wetterdaten: 27.8.2019 um ca. zehn Uhr, Dauer fünf Tage
+-  Wetterdaten: 27.8.2019 um ca. zehn Uhr, dauer fünf Tage
 -  Melodie wird durch Meteodaten generiert:
 
    -  Klarinette: Temperatur
    -  Fagott: Luftfeuchtigkeit
 
 -  Akkordfolge: Cm Ab Fm Ddim G7 Cm Fm G7 (es werden nur Akkordtöne
-   gespielt)
--  Rhythmus mit gesteurtem Zufall
+   gespielt.)
+-  Rhythmus mit gesteurtem Zufall erzeugt.
 
 .. raw:: html
 
@@ -152,7 +152,7 @@ Akordfolge mit Meteodaten
 Tonartwechsel durch Blitz
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
--  Wetterdaten: 3.8.2019 um 14 Uhr, Dauer 5 Tage und 3 Stunden
+-  Wetterdaten: 3.8.2019 um 14 Uhr, dauer 5 Tage und 3 Stunden
 -  Melodie wird durch Meteodaten generiert:
 
    -  Oboe: Luftdruck
@@ -160,17 +160,17 @@ Tonartwechsel durch Blitz
    -  Glocken: Globalstrahlung
 
       -  Globalstrahlung ist Nachts Null
-      -  Nachts wird die Melodie Stummgeschaltet, da sonst dauern
-         derselbe Ton gespielt würde.
+      -  Nachts wird die Melodie pausiert, da sonst dauern derselbe Ton
+         gespielt würde.
 
--  Akkordfolge: Mit dem Ersten Blitz wird die Tonart von C-Dur auf
+-  Akkordfolge: Mit dem ersten Blitz wird die Tonart von C-Dur auf
    C-Moll geändert
 -  Rhythmus:
 
-   -  Rythmus der Melodie-Instumente mit gesteurtem Zufall
-   -  Pauke spielt immer C Es in Sechzehntel
+   -  Rythmus der Melodie-Instumente mit gesteurtem Zufall erzeugt.
+   -  Die Pauke spielt abwechseln die Töne C und Es in Sechzehntel.
    -  Die Lautstärke der Pauke wird durch die Regenmenge kontroliert.
-   -  Regnet es nicht ist die Pauke Stummgeschaltet.
+   -  Regnet es nicht ist die Pauke stummgeschaltet.
 
 .. raw:: html
 
